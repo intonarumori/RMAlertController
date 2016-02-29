@@ -16,53 +16,6 @@
 
 import UIKit
 
-class DebugView: UIView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        print("layoutSubviews")
-    }
-    override func updateConstraints() {
-        super.updateConstraints()
-        print("updateConstraints")
-    }
-    override var center:CGPoint {
-        set {
-            print("set center \(newValue)")
-            super.center = newValue
-        }
-        get {
-            return super.center
-        }
-    }
-    override var transform:CGAffineTransform {
-        set {
-            print("set transform \(newValue)")
-            super.transform = newValue
-        }
-        get {
-            return super.transform
-        }
-    }
-    override var frame:CGRect {
-        set {
-            print("set frame \(newValue)")
-            super.frame = newValue
-        }
-        get {
-            return super.frame
-        }
-    }
-    override var bounds:CGRect {
-        set {
-            print("set bounds \(newValue)")
-            super.bounds = newValue
-        }
-        get {
-            return super.bounds
-        }
-    }
-}
-
 public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
     var showDuration:NSTimeInterval = 0.5
@@ -76,7 +29,6 @@ public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
     var horizontalPadding:CGFloat = 20.0
 
     private var fadeView:UIView?
-    private var innerContainerView:UIView?
     private var contentView:UIView?
     private var centerYConstraint:NSLayoutConstraint?
     private var isDismissing:Bool = false
@@ -116,19 +68,17 @@ public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
                     self.containerView?.layoutIfNeeded()
                 })
             }
-            print("keyboardWillShow \(endFrame) \(height)")
         }
     }
 
     func keyboardWillHide(notification:NSNotification) {
-        print("keyboardWillHide")
 
-        centerYConstant = 0.0
 
         if  let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double,
             let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt,
             let centerYConstraint = self.centerYConstraint {
-                
+
+            centerYConstant = 0.0
             centerYConstraint.constant = centerYConstant
                 
             UIView.animateWithDuration(duration,
@@ -175,8 +125,6 @@ public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
             
             if let contentView = self.contentView {
                 
-                print("transition hide")
-                
                 let duration = self.transitionDuration(transitionContext)
 
                 UIView.animateWithDuration(duration,
@@ -186,7 +134,6 @@ public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
                         
                         contentView.transform = CGAffineTransformMakeTranslation(0, containerView.bounds.height/2.0 + contentView.bounds.height/2.0)
                     }, completion: { (finished) -> Void in
-                        print("transition hide finished \(finished)")
                         transitionContext.completeTransition(finished)
                 })
 
@@ -203,16 +150,16 @@ public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
                         print("transition hide finished \(finished)")
                         transitionContext.completeTransition(finished)
                 })*/
-            }
+
             
-            let fadeView = self.fadeView
-            UIView.animateWithDuration(self.transitionDuration(transitionContext) * backgroundFadeDurationPercent,
-                delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-                    fadeView?.alpha = 0.0
-                }, completion: nil)
-        
-        
-        
+                let fadeView = self.fadeView
+                let fadeDuration = self.transitionDuration(transitionContext) * backgroundFadeDurationPercent
+                let fadeDelay = duration - fadeDuration
+                UIView.animateWithDuration(fadeDuration,
+                    delay: fadeDelay, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+                        fadeView?.alpha = 0.0
+                    }, completion: nil)
+            }
         
         } else {
             
@@ -230,19 +177,9 @@ public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
                     containerView.addSubview(fadeView)
                     self.fadeView = fadeView
                     
-                    
-                    // Create innner containerview
-                    
-                    let innerContainerView = UIView()
-                    innerContainerView.backgroundColor = UIColor.redColor()
-                    innerContainerView.frame = containerView.frame
-                    innerContainerView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-                    containerView.addSubview(innerContainerView)
-                    self.innerContainerView = innerContainerView
-                    
                     // Create contentview
                     
-                    let contentView = DebugView()
+                    let contentView = UIView()
                     contentView.layer.cornerRadius = 10.0
                     contentView.clipsToBounds = true
 
@@ -262,11 +199,11 @@ public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
                     // Add contentview to container
                     
                     contentView.translatesAutoresizingMaskIntoConstraints = false
-                    innerContainerView.addSubview(contentView)
-                    let centerYConstraint = NSLayoutConstraint(item: contentView, attribute: .CenterY, relatedBy: .Equal, toItem: innerContainerView, attribute: .CenterY, multiplier: 1.0, constant: self.centerYConstant)
-                    let leadingConstraint = NSLayoutConstraint(item: contentView, attribute: .Leading, relatedBy: .Equal, toItem: innerContainerView, attribute: .Leading, multiplier: 1.0, constant: horizontalPadding)
-                    let trailingConstraint = NSLayoutConstraint(item: contentView, attribute: .Trailing, relatedBy: .Equal, toItem: innerContainerView, attribute: .Trailing, multiplier: 1.0, constant: -horizontalPadding)
-                    innerContainerView.addConstraints([leadingConstraint, trailingConstraint, centerYConstraint])
+                    containerView.addSubview(contentView)
+                    let centerYConstraint = NSLayoutConstraint(item: contentView, attribute: .CenterY, relatedBy: .Equal, toItem: containerView, attribute: .CenterY, multiplier: 1.0, constant: self.centerYConstant)
+                    let leadingConstraint = NSLayoutConstraint(item: contentView, attribute: .Leading, relatedBy: .Equal, toItem: containerView, attribute: .Leading, multiplier: 1.0, constant: horizontalPadding)
+                    let trailingConstraint = NSLayoutConstraint(item: contentView, attribute: .Trailing, relatedBy: .Equal, toItem: containerView, attribute: .Trailing, multiplier: 1.0, constant: -horizontalPadding)
+                    containerView.addConstraints([leadingConstraint, trailingConstraint, centerYConstraint])
                     self.contentView = contentView
                     self.centerYConstraint = centerYConstraint
                     

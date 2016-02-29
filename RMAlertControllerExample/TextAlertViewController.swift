@@ -27,30 +27,14 @@ class TextAlertViewController: UIViewController {
     
     // MARK:
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        print("viewWillLayoutSubviews")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print("viewDidLayoutSubviews")
-    }
-    
     override func viewWillAppear(animated: Bool) {
-        print("viewwillappear")
         super.viewWillAppear(animated)
         self.textView?.becomeFirstResponder()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        print("viewwilldisapper")
         super.viewWillDisappear(animated)
         self.textView?.resignFirstResponder()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     // MARK: User actions
