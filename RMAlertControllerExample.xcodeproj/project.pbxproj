@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A54D014F1C8053D400826978 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D014E1C8053D400826978 /* AlertViewController.swift */; };
+		A54D01511C80542C00826978 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D01501C80542C00826978 /* AlertViewController.xib */; };
+		A54D01531C8055B800826978 /* AlertTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01521C8055B800826978 /* AlertTransition.swift */; };
+		A54D015A1C8080FA00826978 /* TextAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01581C8080FA00826978 /* TextAlertViewController.swift */; };
+		A54D015B1C8080FA00826978 /* TextAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D01591C8080FA00826978 /* TextAlertViewController.xib */; };
 		A595EECC1C80395E006C1B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EECB1C80395E006C1B23 /* AppDelegate.swift */; };
 		A595EECE1C80395E006C1B23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EECD1C80395E006C1B23 /* ViewController.swift */; };
 		A595EED11C80395E006C1B23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A595EECF1C80395E006C1B23 /* Main.storyboard */; };
 		A595EED31C80395E006C1B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A595EED21C80395E006C1B23 /* Assets.xcassets */; };
 		A595EED61C80395E006C1B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A595EED41C80395E006C1B23 /* LaunchScreen.storyboard */; };
 		A595EEE11C80395E006C1B23 /* RMAlertControllerExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */; };
+		A595EEED1C803989006C1B23 /* ActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEEC1C803989006C1B23 /* ActionSheetController.swift */; };
+		A595EEEF1C8042D3006C1B23 /* ActionSheetTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEEE1C8042D3006C1B23 /* ActionSheetTransition.swift */; };
+		D5D572B8BCD0F3EA3A10A5D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F79EFEAA8E4B163A975A9D09 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +34,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A54D01471C804DE900826978 /* RMAlertControllerExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMAlertControllerExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		A54D014E1C8053D400826978 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		A54D01501C80542C00826978 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		A54D01521C8055B800826978 /* AlertTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTransition.swift; sourceTree = "<group>"; };
+		A54D01581C8080FA00826978 /* TextAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlertViewController.swift; sourceTree = "<group>"; };
+		A54D01591C8080FA00826978 /* TextAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextAlertViewController.xib; sourceTree = "<group>"; };
 		A595EEC81C80395E006C1B23 /* RMAlertControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMAlertControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A595EECB1C80395E006C1B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A595EECD1C80395E006C1B23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +52,9 @@
 		A595EEDC1C80395E006C1B23 /* RMAlertControllerExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMAlertControllerExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAlertControllerExampleTests.swift; sourceTree = "<group>"; };
 		A595EEE21C80395E006C1B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A595EEEC1C803989006C1B23 /* ActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetController.swift; sourceTree = "<group>"; };
+		A595EEEE1C8042D3006C1B23 /* ActionSheetTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetTransition.swift; sourceTree = "<group>"; };
+		F79EFEAA8E4B163A975A9D09 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D572B8BCD0F3EA3A10A5D4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +76,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EED86CAA8ED4615A37E5BB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */,
+				1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A595EEBF1C80395E006C1B23 = {
 			isa = PBXGroup;
 			children = (
+				A595EEEB1C80397A006C1B23 /* RMAlertController */,
 				A595EECA1C80395E006C1B23 /* RMAlertControllerExample */,
 				A595EEDF1C80395E006C1B23 /* RMAlertControllerExampleTests */,
 				A595EEC91C80395E006C1B23 /* Products */,
+				3EED86CAA8ED4615A37E5BB9 /* Pods */,
+				FD40FE049FDA7BD580D529CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +109,17 @@
 		A595EECA1C80395E006C1B23 /* RMAlertControllerExample */ = {
 			isa = PBXGroup;
 			children = (
+				A54D014E1C8053D400826978 /* AlertViewController.swift */,
+				A54D01501C80542C00826978 /* AlertViewController.xib */,
+				A54D01581C8080FA00826978 /* TextAlertViewController.swift */,
+				A54D01591C8080FA00826978 /* TextAlertViewController.xib */,
 				A595EECB1C80395E006C1B23 /* AppDelegate.swift */,
 				A595EECD1C80395E006C1B23 /* ViewController.swift */,
 				A595EECF1C80395E006C1B23 /* Main.storyboard */,
 				A595EED21C80395E006C1B23 /* Assets.xcassets */,
 				A595EED41C80395E006C1B23 /* LaunchScreen.storyboard */,
 				A595EED71C80395E006C1B23 /* Info.plist */,
+				A54D01471C804DE900826978 /* RMAlertControllerExample-Bridging-Header.h */,
 			);
 			path = RMAlertControllerExample;
 			sourceTree = "<group>";
@@ -96,6 +133,24 @@
 			path = RMAlertControllerExampleTests;
 			sourceTree = "<group>";
 		};
+		A595EEEB1C80397A006C1B23 /* RMAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				A595EEEC1C803989006C1B23 /* ActionSheetController.swift */,
+				A595EEEE1C8042D3006C1B23 /* ActionSheetTransition.swift */,
+				A54D01521C8055B800826978 /* AlertTransition.swift */,
+			);
+			path = RMAlertController;
+			sourceTree = "<group>";
+		};
+		FD40FE049FDA7BD580D529CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F79EFEAA8E4B163A975A9D09 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +158,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A595EEE51C80395E006C1B23 /* Build configuration list for PBXNativeTarget "RMAlertControllerExample" */;
 			buildPhases = (
+				C39261C8951930F54952DB28 /* Check Pods Manifest.lock */,
 				A595EEC41C80395E006C1B23 /* Sources */,
 				A595EEC51C80395E006C1B23 /* Frameworks */,
 				A595EEC61C80395E006C1B23 /* Resources */,
+				5DA8D2B807E9213444199CD7 /* Embed Pods Frameworks */,
+				E66FD8EB8551CC07DAA23EBA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,7 +237,9 @@
 			files = (
 				A595EED61C80395E006C1B23 /* LaunchScreen.storyboard in Resources */,
 				A595EED31C80395E006C1B23 /* Assets.xcassets in Resources */,
+				A54D015B1C8080FA00826978 /* TextAlertViewController.xib in Resources */,
 				A595EED11C80395E006C1B23 /* Main.storyboard in Resources */,
+				A54D01511C80542C00826978 /* AlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,12 +252,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5DA8D2B807E9213444199CD7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C39261C8951930F54952DB28 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E66FD8EB8551CC07DAA23EBA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A595EEC41C80395E006C1B23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A595EEEF1C8042D3006C1B23 /* ActionSheetTransition.swift in Sources */,
 				A595EECE1C80395E006C1B23 /* ViewController.swift in Sources */,
+				A595EEED1C803989006C1B23 /* ActionSheetController.swift in Sources */,
+				A54D01531C8055B800826978 /* AlertTransition.swift in Sources */,
+				A54D015A1C8080FA00826978 /* TextAlertViewController.swift in Sources */,
+				A54D014F1C8053D400826978 /* AlertViewController.swift in Sources */,
 				A595EECC1C80395E006C1B23 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,23 +436,30 @@
 		};
 		A595EEE61C80395E006C1B23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RMAlertControllerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RMAlertControllerExample/RMAlertControllerExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A595EEE71C80395E006C1B23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RMAlertControllerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RMAlertControllerExample/RMAlertControllerExample-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -386,6 +506,7 @@
 				A595EEE71C80395E006C1B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A595EEE81C80395E006C1B23 /* Build configuration list for PBXNativeTarget "RMAlertControllerExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -394,6 +515,7 @@
 				A595EEEA1C80395E006C1B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
