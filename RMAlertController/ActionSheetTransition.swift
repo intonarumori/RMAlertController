@@ -10,14 +10,14 @@ import UIKit
 
 public class ActionSheetTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
 
-    var transitionDuration:NSTimeInterval = 0.5
-    var backgroundAlpha:CGFloat = 0.3
-    var springDamping:CGFloat = 0.6
+    var transitionDuration:NSTimeInterval = 0.4
+    var backgroundAlpha:CGFloat = 0.4
+    var springDamping:CGFloat = 1.0
     var dismissEnabledWithBackgroundTap:Bool = true
     var backgroundFadeDurationPercent:Double = 0.4
 
-    var horizontalPadding:CGFloat = 20.0
-    var verticalPadding:CGFloat = 20.0
+    var horizontalPadding:CGFloat = 10.0
+    var verticalPadding:CGFloat = 10.0
 
     private var fadeView:UIView?
     private var isDismissing:Bool = false
@@ -54,13 +54,16 @@ public class ActionSheetTransition: NSObject, UIViewControllerTransitioningDeleg
         
         if isDismissing {
             
+            let duration = self.transitionDuration(transitionContext)
+            
             if let
                 bottomConstraint = self.bottomConstraint,
                 fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
 
                 let height = fromView.frame.height
                 
-                UIView.animateWithDuration(self.transitionDuration(transitionContext),
+                UIView.animateWithDuration(
+                    duration,
                     delay: 0.0,
                     usingSpringWithDamping: springDamping,
                     initialSpringVelocity: 0.0,
@@ -72,11 +75,28 @@ public class ActionSheetTransition: NSObject, UIViewControllerTransitioningDeleg
                 })
             }
             
+            // animate fadeview
+            
+            let fadeDuration = duration * backgroundFadeDurationPercent
+            
             let fadeView = self.fadeView
-            UIView.animateWithDuration(self.transitionDuration(transitionContext) * backgroundFadeDurationPercent,
-                delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+            UIView.animateWithDuration(
+                fadeDuration,
+                delay: 0.0,
+                options: UIViewAnimationOptions.CurveLinear,
+                animations: { () -> Void in
                     fadeView?.alpha = 0.0
-                }, completion: nil)
+                },
+                completion: nil)
+            
+            // animate tintcolors
+            
+            if let window = containerView.window {
+                UIView.animateWithDuration(fadeDuration, animations: { () -> Void in
+                    window.tintAdjustmentMode = .Normal
+                })
+            }
+            
         } else {
             
             if
@@ -108,7 +128,9 @@ public class ActionSheetTransition: NSObject, UIViewControllerTransitioningDeleg
                     
                     self.bottomConstraint = bottomConstraint
                     
-                    UIView.animateWithDuration(self.transitionDuration(transitionContext),
+                    let duration = self.transitionDuration(transitionContext)
+                    
+                    UIView.animateWithDuration(duration,
                         delay: 0.0,
                         usingSpringWithDamping: springDamping,
                         initialSpringVelocity: 0.0,
@@ -120,11 +142,24 @@ public class ActionSheetTransition: NSObject, UIViewControllerTransitioningDeleg
                             transitionContext.completeTransition(finished)
                     })
                     
+                    // animate fadeview
+                    
+                    let fadeDuration = duration * backgroundFadeDurationPercent
+                    
                     fadeView.alpha = 0.0
-                    UIView.animateWithDuration(self.transitionDuration(transitionContext) * backgroundFadeDurationPercent,
+                    UIView.animateWithDuration(fadeDuration,
                         delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
                             fadeView.alpha = 1.0
                         }, completion: nil)
+                    
+                    // animate tintcolors
+                    
+                    if let window = containerView.window {
+                        UIView.animateWithDuration(fadeDuration, animations: { () -> Void in
+                            window.tintAdjustmentMode = .Dimmed
+                        })
+                    }
+                    containerView.tintAdjustmentMode = .Normal
             }
         }
     }

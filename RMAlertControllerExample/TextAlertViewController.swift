@@ -8,9 +8,13 @@
 
 import UIKit
 
-class TextAlertViewController: UIViewController {
+class TextAlertViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var textView:UITextView?
+    @IBOutlet weak var textViewHeightConstraint:NSLayoutConstraint?
+    
+    let minimumTextHeight:CGFloat = 65.0
+    let maximumTextHeight:CGFloat = 150.0
     
     let transitionDelegate:UIViewControllerTransitioningDelegate?
     
@@ -36,6 +40,42 @@ class TextAlertViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.textView?.resignFirstResponder()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.updateTextViewScrolling()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.updateTextViewScrolling()
+    }
+    
+    
+    // MARK:
+    
+    func textViewDidChange(textView: UITextView) {
+        self.updateTextViewScrolling()
+    }
+
+    // MARK:
+    
+    func updateTextViewScrolling() {
+        guard let textView = self.textView else {
+            return
+        }
+        
+        let textHeight = textView.sizeThatFits(CGSize(width: textView.bounds.width, height: CGFloat.max)).height
+        
+        let textViewHeight = min(maximumTextHeight, max(minimumTextHeight, textHeight))
+        let shouldScroll = (textViewHeight < textHeight)
+        
+        if textView.scrollEnabled != shouldScroll {
+            textView.scrollEnabled = shouldScroll
+        }
+        self.textViewHeightConstraint?.constant = textViewHeight
+    }
+
     
     // MARK: User actions
     

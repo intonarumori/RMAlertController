@@ -14,19 +14,51 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: -
+    
+    @IBAction func showNativeActionSheet() {
+    
+        let actionController = UIAlertController(title: "Title", message: "Message", preferredStyle: .ActionSheet)
+        actionController.addAction(UIAlertAction(title: "First option", style: .Default, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        actionController.addAction(UIAlertAction(title: "Second option", style: .Destructive, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        actionController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        self.presentViewController(actionController, animated: true, completion: nil)
+    }
+    
     @IBAction func showActionSheet() {
-        let viewController = ActionSheetController()
-        viewController.addAction(ActionSheetAction(title: "1", type: .Default, handler: { (action) -> Void in
+        let viewController = CustomActionSheetController(title: "Title", message: "Message")
+        viewController.addAction(CustomActionSheetAction(title: "First option", subtitle: nil, type: .Default, handler: { (action) -> Void in
             print(action.title)
         }))
-        viewController.addAction(ActionSheetAction(title: "2", type: .Destructive, handler: { (action) -> Void in
+        viewController.addAction(CustomActionSheetAction(title: "Second option", subtitle: nil, type: .Destructive, handler: { (action) -> Void in
             print(action.title)
         }))
-        viewController.addAction(ActionSheetAction(title: "Cancel", type: .Cancel, handler: { (action) -> Void in
+        viewController.addAction(CustomActionSheetAction(title: "Cancel", subtitle: nil, type: .Cancel, handler: { (action) -> Void in
             print(action.title)
         }))
         self.presentViewController(viewController, animated: true, completion: nil)
     }
+
+    @IBAction func showCustomActionSheet() {
+        let viewController = CustomActionSheetController(title: "Title", message: "Message")
+        viewController.addAction(CustomActionSheetAction(title: "First option", subtitle: "First option subtitle", type: .Default, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        viewController.addAction(CustomActionSheetAction(title: "Second option", subtitle: "Second option subtitle", type: .Destructive, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        viewController.addAction(CustomActionSheetAction(title: "Cancel", subtitle: nil, type: .Cancel, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
+
     
     @IBAction func showAlert() {
         let viewController = AlertViewController()

@@ -37,14 +37,20 @@ class ActionSheetController: UIViewController {
     var stackView:OAStackView? {
         return self.isViewLoaded() ? (self.view as? OAStackView) : nil
     }
+
+    var message:String?
     
     var actions:Array<ActionSheetAction> = []
     var cancelAction:ActionSheetAction?
     
     var transitionDelegate:UIViewControllerTransitioningDelegate?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    init(title:String, message:String) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.message = message
+        self.title = title
+        
         self.transitionDelegate = ActionSheetTransition()
         self.transitioningDelegate = self.transitionDelegate
         self.modalPresentationStyle = .Custom
@@ -96,7 +102,6 @@ class ActionSheetController: UIViewController {
     
     func createButtonView() -> UIView {
 
-        
         let view = UIView()
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
@@ -118,11 +123,11 @@ class ActionSheetController: UIViewController {
 
         let titleLabel = UILabel()
         titleLabel.textAlignment = .Center
-        titleLabel.text = "Title of the sheet"
+        titleLabel.text = self.title
 
         let detailLabel = UILabel()
         detailLabel.textAlignment = .Center
-        detailLabel.text = "Detail of the sheet"
+        detailLabel.text = self.message
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(titleLabel)
