@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D4E8DF5CD4E192CB6DCF0CA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E83E0B38F1E19E31D2BAED /* Pods.framework */; };
 		A54D01531C8055B800826978 /* RMAlertTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01521C8055B800826978 /* RMAlertTransition.swift */; };
 		A54D01671C85947400826978 /* RMActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01661C85947400826978 /* RMActionSheetController.swift */; };
 		A54D01691C85B00300826978 /* RMSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01681C85B00300826978 /* RMSeparatorView.swift */; };
@@ -21,7 +22,6 @@
 		A595EED61C80395E006C1B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A595EED41C80395E006C1B23 /* LaunchScreen.storyboard */; };
 		A595EEE11C80395E006C1B23 /* RMAlertControllerExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */; };
 		A595EEEF1C8042D3006C1B23 /* RMActionSheetTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */; };
-		D5D572B8BCD0F3EA3A10A5D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F79EFEAA8E4B163A975A9D09 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		A54D01471C804DE900826978 /* RMAlertControllerExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMAlertControllerExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		58E83E0B38F1E19E31D2BAED /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54D01521C8055B800826978 /* RMAlertTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAlertTransition.swift; sourceTree = "<group>"; };
 		A54D01661C85947400826978 /* RMActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetController.swift; sourceTree = "<group>"; };
 		A54D01681C85B00300826978 /* RMSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSeparatorView.swift; sourceTree = "<group>"; };
@@ -56,7 +56,6 @@
 		A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAlertControllerExampleTests.swift; sourceTree = "<group>"; };
 		A595EEE21C80395E006C1B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetTransition.swift; sourceTree = "<group>"; };
-		F79EFEAA8E4B163A975A9D09 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D572B8BCD0F3EA3A10A5D4 /* libPods.a in Frameworks */,
+				1D4E8DF5CD4E192CB6DCF0CA /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +128,6 @@
 				A595EED41C80395E006C1B23 /* LaunchScreen.storyboard */,
 				A595EED21C80395E006C1B23 /* Assets.xcassets */,
 				A595EED71C80395E006C1B23 /* Info.plist */,
-				A54D01471C804DE900826978 /* RMAlertControllerExample-Bridging-Header.h */,
 			);
 			path = RMAlertControllerExample;
 			sourceTree = "<group>";
@@ -157,7 +155,7 @@
 		FD40FE049FDA7BD580D529CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F79EFEAA8E4B163A975A9D09 /* libPods.a */,
+				58E83E0B38F1E19E31D2BAED /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -456,7 +454,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RMAlertControllerExample/RMAlertControllerExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -471,7 +468,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RMAlertControllerExample/RMAlertControllerExample-Bridging-Header.h";
 			};
 			name = Release;
 		};
