@@ -31,8 +31,7 @@ class CustomActionSheetAction {
 class CustomActionSheetController: UIViewController {
 
     let cornerRadius:CGFloat = 15.0
-    let sectionSpacing:CGFloat = 3.0
-    let itemSpacing:CGFloat = 0.5
+    let sectionSpacing:CGFloat = 8.0
     
     var titleColor:UIColor = UIColor.lightGrayColor()
     var messageColor:UIColor = UIColor.lightGrayColor()
@@ -42,6 +41,7 @@ class CustomActionSheetController: UIViewController {
     var itemTitleFont:UIFont = UIFont.systemFontOfSize(19.0)
     var itemSubtitleFont:UIFont = UIFont.systemFontOfSize(11.0)
     var cancelTitleFont:UIFont = UIFont.boldSystemFontOfSize(19.0)
+    var separatorColor:UIColor = UIColor(white: 0.9, alpha: 1.0)
     
     var itemDestructiveTextColor:UIColor = UIColor.redColor()
     var itemTitleTextColor:UIColor? = nil
@@ -121,7 +121,6 @@ class CustomActionSheetController: UIViewController {
         
         let buttonStackView = OAStackView()
         buttonStackView.axis = .Vertical
-        buttonStackView.spacing = itemSpacing
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonStackView)
         view.addConstraints([
@@ -133,9 +132,12 @@ class CustomActionSheetController: UIViewController {
         
         let titleView = self.createTitleView(self.title, message:self.message)
         buttonStackView.addArrangedSubview(titleView)
+        let separator = AlertSeparatorView()
+        separator.lineColor = self.separatorColor
+        buttonStackView.addArrangedSubview(separator)
         
         var counter = 0
-        for action in self.actions {
+        for (index, action) in self.actions.enumerate() {
             let button = UIButton(type: .System)
             button.titleLabel?.numberOfLines = 0
 
@@ -168,6 +170,12 @@ class CustomActionSheetController: UIViewController {
             button.addTarget(self, action: Selector("itemTapped:"), forControlEvents: .TouchUpInside)
             buttonStackView.addArrangedSubview(button)
 
+            if index < (self.actions.count-1) {
+                let separator = AlertSeparatorView()
+                separator.lineColor = self.separatorColor
+                buttonStackView.addArrangedSubview(separator)
+            }
+            
             button.tag = counter
             counter += 1
         }

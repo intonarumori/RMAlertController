@@ -13,6 +13,7 @@
 		A54D015A1C8080FA00826978 /* TextAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01581C8080FA00826978 /* TextAlertViewController.swift */; };
 		A54D015B1C8080FA00826978 /* TextAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D01591C8080FA00826978 /* TextAlertViewController.xib */; };
 		A54D01671C85947400826978 /* CustomActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01661C85947400826978 /* CustomActionSheetController.swift */; };
+		A54D01691C85B00300826978 /* AlertSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01681C85B00300826978 /* AlertSeparatorView.swift */; };
 		A595EECC1C80395E006C1B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EECB1C80395E006C1B23 /* AppDelegate.swift */; };
 		A595EECE1C80395E006C1B23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EECD1C80395E006C1B23 /* ViewController.swift */; };
 		A595EED11C80395E006C1B23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A595EECF1C80395E006C1B23 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		A54D01581C8080FA00826978 /* TextAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlertViewController.swift; sourceTree = "<group>"; };
 		A54D01591C8080FA00826978 /* TextAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextAlertViewController.xib; sourceTree = "<group>"; };
 		A54D01661C85947400826978 /* CustomActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActionSheetController.swift; sourceTree = "<group>"; };
+		A54D01681C85B00300826978 /* AlertSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertSeparatorView.swift; sourceTree = "<group>"; };
 		A595EEC81C80395E006C1B23 /* RMAlertControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMAlertControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A595EECB1C80395E006C1B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A595EECD1C80395E006C1B23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				A595EEEE1C8042D3006C1B23 /* ActionSheetTransition.swift */,
 				A54D01521C8055B800826978 /* AlertTransition.swift */,
 				A54D01661C85947400826978 /* CustomActionSheetController.swift */,
+				A54D01681C85B00300826978 /* AlertSeparatorView.swift */,
 			);
 			path = RMAlertController;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				A595EECE1C80395E006C1B23 /* ViewController.swift in Sources */,
 				A595EEED1C803989006C1B23 /* ActionSheetController.swift in Sources */,
 				A54D01531C8055B800826978 /* AlertTransition.swift in Sources */,
+				A54D01691C85B00300826978 /* AlertSeparatorView.swift in Sources */,
 				A54D015A1C8080FA00826978 /* TextAlertViewController.swift in Sources */,
 				A54D014F1C8053D400826978 /* AlertViewController.swift in Sources */,
 				A54D01671C85947400826978 /* CustomActionSheetController.swift in Sources */,
