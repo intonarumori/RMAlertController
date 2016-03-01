@@ -10,7 +10,7 @@ import UIKit
 
 
 @IBDesignable
-class AlertSeparatorView: UIView {
+class RMSeparatorView: UIView {
     
     @IBInspectable var lineColor:UIColor = UIColor.grayColor()
     

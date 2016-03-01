@@ -7,21 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A54D014F1C8053D400826978 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D014E1C8053D400826978 /* AlertViewController.swift */; };
-		A54D01511C80542C00826978 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D01501C80542C00826978 /* AlertViewController.xib */; };
-		A54D01531C8055B800826978 /* AlertTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01521C8055B800826978 /* AlertTransition.swift */; };
-		A54D015A1C8080FA00826978 /* TextAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01581C8080FA00826978 /* TextAlertViewController.swift */; };
-		A54D015B1C8080FA00826978 /* TextAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D01591C8080FA00826978 /* TextAlertViewController.xib */; };
-		A54D01671C85947400826978 /* CustomActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01661C85947400826978 /* CustomActionSheetController.swift */; };
-		A54D01691C85B00300826978 /* AlertSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01681C85B00300826978 /* AlertSeparatorView.swift */; };
+		A54D01531C8055B800826978 /* RMAlertTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01521C8055B800826978 /* RMAlertTransition.swift */; };
+		A54D01671C85947400826978 /* RMActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01661C85947400826978 /* RMActionSheetController.swift */; };
+		A54D01691C85B00300826978 /* RMSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01681C85B00300826978 /* RMSeparatorView.swift */; };
+		A54D01701C85B61A00826978 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D016C1C85B61A00826978 /* AlertViewController.swift */; };
+		A54D01711C85B61A00826978 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D016D1C85B61A00826978 /* AlertViewController.xib */; };
+		A54D01721C85B61A00826978 /* TextAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D016E1C85B61A00826978 /* TextAlertViewController.swift */; };
+		A54D01731C85B61A00826978 /* TextAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A54D016F1C85B61A00826978 /* TextAlertViewController.xib */; };
 		A595EECC1C80395E006C1B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EECB1C80395E006C1B23 /* AppDelegate.swift */; };
 		A595EECE1C80395E006C1B23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EECD1C80395E006C1B23 /* ViewController.swift */; };
 		A595EED11C80395E006C1B23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A595EECF1C80395E006C1B23 /* Main.storyboard */; };
 		A595EED31C80395E006C1B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A595EED21C80395E006C1B23 /* Assets.xcassets */; };
 		A595EED61C80395E006C1B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A595EED41C80395E006C1B23 /* LaunchScreen.storyboard */; };
 		A595EEE11C80395E006C1B23 /* RMAlertControllerExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */; };
-		A595EEED1C803989006C1B23 /* ActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEEC1C803989006C1B23 /* ActionSheetController.swift */; };
-		A595EEEF1C8042D3006C1B23 /* ActionSheetTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEEE1C8042D3006C1B23 /* ActionSheetTransition.swift */; };
+		A595EEEF1C8042D3006C1B23 /* RMActionSheetTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */; };
 		D5D572B8BCD0F3EA3A10A5D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F79EFEAA8E4B163A975A9D09 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -39,13 +38,13 @@
 		1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A54D01471C804DE900826978 /* RMAlertControllerExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMAlertControllerExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		A54D014E1C8053D400826978 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		A54D01501C80542C00826978 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
-		A54D01521C8055B800826978 /* AlertTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTransition.swift; sourceTree = "<group>"; };
-		A54D01581C8080FA00826978 /* TextAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlertViewController.swift; sourceTree = "<group>"; };
-		A54D01591C8080FA00826978 /* TextAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextAlertViewController.xib; sourceTree = "<group>"; };
-		A54D01661C85947400826978 /* CustomActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActionSheetController.swift; sourceTree = "<group>"; };
-		A54D01681C85B00300826978 /* AlertSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertSeparatorView.swift; sourceTree = "<group>"; };
+		A54D01521C8055B800826978 /* RMAlertTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAlertTransition.swift; sourceTree = "<group>"; };
+		A54D01661C85947400826978 /* RMActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetController.swift; sourceTree = "<group>"; };
+		A54D01681C85B00300826978 /* RMSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSeparatorView.swift; sourceTree = "<group>"; };
+		A54D016C1C85B61A00826978 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		A54D016D1C85B61A00826978 /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		A54D016E1C85B61A00826978 /* TextAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlertViewController.swift; sourceTree = "<group>"; };
+		A54D016F1C85B61A00826978 /* TextAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextAlertViewController.xib; sourceTree = "<group>"; };
 		A595EEC81C80395E006C1B23 /* RMAlertControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMAlertControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A595EECB1C80395E006C1B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A595EECD1C80395E006C1B23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,8 +55,7 @@
 		A595EEDC1C80395E006C1B23 /* RMAlertControllerExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMAlertControllerExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAlertControllerExampleTests.swift; sourceTree = "<group>"; };
 		A595EEE21C80395E006C1B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A595EEEC1C803989006C1B23 /* ActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetController.swift; sourceTree = "<group>"; };
-		A595EEEE1C8042D3006C1B23 /* ActionSheetTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetTransition.swift; sourceTree = "<group>"; };
+		A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetTransition.swift; sourceTree = "<group>"; };
 		F79EFEAA8E4B163A975A9D09 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -89,6 +87,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A54D016B1C85B61A00826978 /* CustomAlertViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A54D016C1C85B61A00826978 /* AlertViewController.swift */,
+				A54D016D1C85B61A00826978 /* AlertViewController.xib */,
+				A54D016E1C85B61A00826978 /* TextAlertViewController.swift */,
+				A54D016F1C85B61A00826978 /* TextAlertViewController.xib */,
+			);
+			path = CustomAlertViewControllers;
+			sourceTree = "<group>";
+		};
 		A595EEBF1C80395E006C1B23 = {
 			isa = PBXGroup;
 			children = (
@@ -113,15 +122,12 @@
 		A595EECA1C80395E006C1B23 /* RMAlertControllerExample */ = {
 			isa = PBXGroup;
 			children = (
-				A54D014E1C8053D400826978 /* AlertViewController.swift */,
-				A54D01501C80542C00826978 /* AlertViewController.xib */,
-				A54D01581C8080FA00826978 /* TextAlertViewController.swift */,
-				A54D01591C8080FA00826978 /* TextAlertViewController.xib */,
+				A54D016B1C85B61A00826978 /* CustomAlertViewControllers */,
 				A595EECB1C80395E006C1B23 /* AppDelegate.swift */,
 				A595EECD1C80395E006C1B23 /* ViewController.swift */,
 				A595EECF1C80395E006C1B23 /* Main.storyboard */,
-				A595EED21C80395E006C1B23 /* Assets.xcassets */,
 				A595EED41C80395E006C1B23 /* LaunchScreen.storyboard */,
+				A595EED21C80395E006C1B23 /* Assets.xcassets */,
 				A595EED71C80395E006C1B23 /* Info.plist */,
 				A54D01471C804DE900826978 /* RMAlertControllerExample-Bridging-Header.h */,
 			);
@@ -140,11 +146,10 @@
 		A595EEEB1C80397A006C1B23 /* RMAlertController */ = {
 			isa = PBXGroup;
 			children = (
-				A595EEEC1C803989006C1B23 /* ActionSheetController.swift */,
-				A595EEEE1C8042D3006C1B23 /* ActionSheetTransition.swift */,
-				A54D01521C8055B800826978 /* AlertTransition.swift */,
-				A54D01661C85947400826978 /* CustomActionSheetController.swift */,
-				A54D01681C85B00300826978 /* AlertSeparatorView.swift */,
+				A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */,
+				A54D01521C8055B800826978 /* RMAlertTransition.swift */,
+				A54D01681C85B00300826978 /* RMSeparatorView.swift */,
+				A54D01661C85947400826978 /* RMActionSheetController.swift */,
 			);
 			path = RMAlertController;
 			sourceTree = "<group>";
@@ -243,9 +248,9 @@
 			files = (
 				A595EED61C80395E006C1B23 /* LaunchScreen.storyboard in Resources */,
 				A595EED31C80395E006C1B23 /* Assets.xcassets in Resources */,
-				A54D015B1C8080FA00826978 /* TextAlertViewController.xib in Resources */,
+				A54D01731C85B61A00826978 /* TextAlertViewController.xib in Resources */,
 				A595EED11C80395E006C1B23 /* Main.storyboard in Resources */,
-				A54D01511C80542C00826978 /* AlertViewController.xib in Resources */,
+				A54D01711C85B61A00826978 /* AlertViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,14 +316,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A595EEEF1C8042D3006C1B23 /* ActionSheetTransition.swift in Sources */,
+				A595EEEF1C8042D3006C1B23 /* RMActionSheetTransition.swift in Sources */,
+				A54D01701C85B61A00826978 /* AlertViewController.swift in Sources */,
 				A595EECE1C80395E006C1B23 /* ViewController.swift in Sources */,
-				A595EEED1C803989006C1B23 /* ActionSheetController.swift in Sources */,
-				A54D01531C8055B800826978 /* AlertTransition.swift in Sources */,
-				A54D01691C85B00300826978 /* AlertSeparatorView.swift in Sources */,
-				A54D015A1C8080FA00826978 /* TextAlertViewController.swift in Sources */,
-				A54D014F1C8053D400826978 /* AlertViewController.swift in Sources */,
-				A54D01671C85947400826978 /* CustomActionSheetController.swift in Sources */,
+				A54D01531C8055B800826978 /* RMAlertTransition.swift in Sources */,
+				A54D01721C85B61A00826978 /* TextAlertViewController.swift in Sources */,
+				A54D01691C85B00300826978 /* RMSeparatorView.swift in Sources */,
+				A54D01671C85947400826978 /* RMActionSheetController.swift in Sources */,
 				A595EECC1C80395E006C1B23 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

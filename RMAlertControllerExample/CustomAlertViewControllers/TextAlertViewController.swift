@@ -19,7 +19,7 @@ class TextAlertViewController: UIViewController, UITextViewDelegate {
     let transitionDelegate:UIViewControllerTransitioningDelegate?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        self.transitionDelegate = AlertTransition()
+        self.transitionDelegate = RMAlertTransition()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.transitioningDelegate = self.transitionDelegate
         self.modalPresentationStyle = .Custom

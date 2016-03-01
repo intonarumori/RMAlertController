@@ -16,7 +16,7 @@
 
 import UIKit
 
-public class AlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
     var showDuration:NSTimeInterval = 0.5
     var hideDuration:NSTimeInterval = 0.3

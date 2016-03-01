@@ -10,10 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: -
     
     @IBAction func showNativeActionSheet() {
@@ -32,28 +28,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showActionSheet() {
-        let viewController = CustomActionSheetController(title: "Title", message: "Message")
-        viewController.addAction(CustomActionSheetAction(title: "First option", subtitle: nil, type: .Default, handler: { (action) -> Void in
+        let viewController = RMActionSheetController(title: "Title", message: "Message")
+        viewController.addAction(RMActionSheetAction(title: "First option", subtitle: nil, type: .Default, handler: { (action) -> Void in
             print(action.title)
         }))
-        viewController.addAction(CustomActionSheetAction(title: "Second option", subtitle: nil, type: .Destructive, handler: { (action) -> Void in
+        viewController.addAction(RMActionSheetAction(title: "Second option", subtitle: nil, type: .Destructive, handler: { (action) -> Void in
             print(action.title)
         }))
-        viewController.addAction(CustomActionSheetAction(title: "Cancel", subtitle: nil, type: .Cancel, handler: { (action) -> Void in
+        viewController.addAction(RMActionSheetAction(title: "Cancel", subtitle: nil, type: .Cancel, handler: { (action) -> Void in
             print(action.title)
         }))
         self.presentViewController(viewController, animated: true, completion: nil)
     }
 
     @IBAction func showCustomActionSheet() {
-        let viewController = CustomActionSheetController(title: "Title", message: "Message")
-        viewController.addAction(CustomActionSheetAction(title: "First option", subtitle: "First option subtitle", type: .Default, handler: { (action) -> Void in
+        let viewController = RMActionSheetController(title: "Title", message: "Message")
+        viewController.addAction(RMActionSheetAction(title: "First option", subtitle: "First option subtitle", type: .Default, handler: { (action) -> Void in
             print(action.title)
         }))
-        viewController.addAction(CustomActionSheetAction(title: "Second option", subtitle: "Second option subtitle", type: .Destructive, handler: { (action) -> Void in
+        viewController.addAction(RMActionSheetAction(title: "Second option", subtitle: "Second option subtitle", type: .Destructive, handler: { (action) -> Void in
             print(action.title)
         }))
-        viewController.addAction(CustomActionSheetAction(title: "Cancel", subtitle: nil, type: .Cancel, handler: { (action) -> Void in
+        viewController.addAction(RMActionSheetAction(title: "Cancel", subtitle: nil, type: .Cancel, handler: { (action) -> Void in
             print(action.title)
         }))
         self.presentViewController(viewController, animated: true, completion: nil)

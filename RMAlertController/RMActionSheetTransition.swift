@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ActionSheetTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+public class RMActionSheetTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
 
     var transitionDuration:NSTimeInterval = 0.4
     var backgroundAlpha:CGFloat = 0.4

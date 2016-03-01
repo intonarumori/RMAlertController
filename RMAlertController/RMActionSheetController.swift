@@ -8,19 +8,19 @@
 
 import UIKit
 
-enum CustomActionSheetActionType {
+enum RMActionSheetActionType {
     case Default
     case Destructive
     case Cancel
 }
 
-class CustomActionSheetAction {
+class RMActionSheetAction {
     let title:String
     let subtitle:String?
-    let type:CustomActionSheetActionType
-    let handler:(CustomActionSheetAction -> Void)
+    let type:RMActionSheetActionType
+    let handler:(RMActionSheetAction -> Void)
     
-    init(title:String, subtitle:String?, type:CustomActionSheetActionType, handler:(CustomActionSheetAction -> Void)) {
+    init(title:String, subtitle:String?, type:RMActionSheetActionType, handler:(RMActionSheetAction -> Void)) {
         self.title = title
         self.subtitle = subtitle
         self.type = type
@@ -28,7 +28,9 @@ class CustomActionSheetAction {
     }
 }
 
-class CustomActionSheetController: UIViewController {
+// MARK: -
+
+class RMActionSheetController: UIViewController {
 
     let cornerRadius:CGFloat = 15.0
     let sectionSpacing:CGFloat = 8.0
@@ -52,8 +54,8 @@ class CustomActionSheetController: UIViewController {
     
     var message:String?
     
-    var actions:Array<CustomActionSheetAction> = []
-    var cancelAction:CustomActionSheetAction?
+    var actions:Array<RMActionSheetAction> = []
+    var cancelAction:RMActionSheetAction?
     
     var transitionDelegate:UIViewControllerTransitioningDelegate?
     
@@ -63,7 +65,7 @@ class CustomActionSheetController: UIViewController {
         self.message = message
         self.title = title
         
-        self.transitionDelegate = ActionSheetTransition()
+        self.transitionDelegate = RMActionSheetTransition()
         self.transitioningDelegate = self.transitionDelegate
         self.modalPresentationStyle = .Custom
     }
@@ -74,7 +76,7 @@ class CustomActionSheetController: UIViewController {
     
     // MARK:
     
-    func addAction(action:CustomActionSheetAction) {
+    func addAction(action:RMActionSheetAction) {
         switch action.type {
         case .Cancel:
             self.cancelAction = action
@@ -102,7 +104,7 @@ class CustomActionSheetController: UIViewController {
         }
     }
     
-    func createCancelButton(action:CustomActionSheetAction) -> UIButton {
+    func createCancelButton(action:RMActionSheetAction) -> UIButton {
         let button = UIButton(type: .System)
         button.setTitle(action.title, forState: .Normal)
         button.titleLabel?.font = self.cancelTitleFont
@@ -132,7 +134,7 @@ class CustomActionSheetController: UIViewController {
         
         let titleView = self.createTitleView(self.title, message:self.message)
         buttonStackView.addArrangedSubview(titleView)
-        let separator = AlertSeparatorView()
+        let separator = RMSeparatorView()
         separator.lineColor = self.separatorColor
         buttonStackView.addArrangedSubview(separator)
         
@@ -162,7 +164,7 @@ class CustomActionSheetController: UIViewController {
             }
             
             button.setAttributedTitle(attributedString, forState: .Normal)
-            button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+            button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
             button.backgroundColor = UIColor.whiteColor()
             if action.type == .Destructive {
                 button.setTitleColor(UIColor.redColor(), forState: .Normal)
@@ -171,7 +173,7 @@ class CustomActionSheetController: UIViewController {
             buttonStackView.addArrangedSubview(button)
 
             if index < (self.actions.count-1) {
-                let separator = AlertSeparatorView()
+                let separator = RMSeparatorView()
                 separator.lineColor = self.separatorColor
                 buttonStackView.addArrangedSubview(separator)
             }
