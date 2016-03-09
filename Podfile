@@ -1,2 +1,3 @@
 use_frameworks!
-pod "OAStackView"
+
+pod "OAStackView", :git => "https://github.com/intonarumori/OAStackView", :branch => "master"
