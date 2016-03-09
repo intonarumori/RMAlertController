@@ -22,6 +22,7 @@
 		A595EED61C80395E006C1B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A595EED41C80395E006C1B23 /* LaunchScreen.storyboard */; };
 		A595EEE11C80395E006C1B23 /* RMAlertControllerExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */; };
 		A595EEEF1C8042D3006C1B23 /* RMActionSheetTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */; };
+		A5B71CDF1C9091EE00AFDFBF /* CustomTextActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B71CDE1C9091EE00AFDFBF /* CustomTextActionSheetController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		A595EEE01C80395E006C1B23 /* RMAlertControllerExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAlertControllerExampleTests.swift; sourceTree = "<group>"; };
 		A595EEE21C80395E006C1B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetTransition.swift; sourceTree = "<group>"; };
+		A5B71CDE1C9091EE00AFDFBF /* CustomTextActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextActionSheetController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		A595EECA1C80395E006C1B23 /* RMAlertControllerExample */ = {
 			isa = PBXGroup;
 			children = (
+				A5B71CDD1C9091AA00AFDFBF /* CustomActionSheetControllers */,
 				A54D016B1C85B61A00826978 /* CustomAlertViewControllers */,
 				A595EECB1C80395E006C1B23 /* AppDelegate.swift */,
 				A595EECD1C80395E006C1B23 /* ViewController.swift */,
@@ -150,6 +153,14 @@
 				A54D01661C85947400826978 /* RMActionSheetController.swift */,
 			);
 			path = RMAlertController;
+			sourceTree = "<group>";
+		};
+		A5B71CDD1C9091AA00AFDFBF /* CustomActionSheetControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5B71CDE1C9091EE00AFDFBF /* CustomTextActionSheetController.swift */,
+			);
+			path = CustomActionSheetControllers;
 			sourceTree = "<group>";
 		};
 		FD40FE049FDA7BD580D529CF /* Frameworks */ = {
@@ -317,6 +328,7 @@
 				A595EEEF1C8042D3006C1B23 /* RMActionSheetTransition.swift in Sources */,
 				A54D01701C85B61A00826978 /* AlertViewController.swift in Sources */,
 				A595EECE1C80395E006C1B23 /* ViewController.swift in Sources */,
+				A5B71CDF1C9091EE00AFDFBF /* CustomTextActionSheetController.swift in Sources */,
 				A54D01531C8055B800826978 /* RMAlertTransition.swift in Sources */,
 				A54D01721C85B61A00826978 /* TextAlertViewController.swift in Sources */,
 				A54D01691C85B00300826978 /* RMSeparatorView.swift in Sources */,

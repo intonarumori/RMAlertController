@@ -1,40 +1,18 @@
 //
-//  CustomActionSheetController.swift
+//  CustomTextActionSheetController.swift
 //  RMAlertControllerExample
 //
-//  Created by Daniel Langh on 01/03/16.
+//  Created by Daniel Langh on 09/03/16.
 //  Copyright © 2016 rumori. All rights reserved.
 //
 
 import UIKit
 import OAStackView
 
-public enum RMActionSheetActionType {
-    case Default
-    case Destructive
-    case Cancel
-}
+public class CustomTextActionSheetController: UIViewController {
 
-public class RMActionSheetAction {
-    let title:String
-    let subtitle:String?
-    let type:RMActionSheetActionType
-    let handler:(RMActionSheetAction -> Void)
-    
-    init(title:String, subtitle:String?, type:RMActionSheetActionType, handler:(RMActionSheetAction -> Void)) {
-        self.title = title
-        self.subtitle = subtitle
-        self.type = type
-        self.handler = handler
-    }
-}
-
-// MARK: -
-
-public class RMActionSheetController: UIViewController {
-
-    let cornerRadius:CGFloat = 15.0
-    let sectionSpacing:CGFloat = 8.0
+    let cornerRadius:CGFloat = 5.0
+    let sectionSpacing:CGFloat = 2.0
     
     var titleColor:UIColor = UIColor.lightGrayColor()
     var messageColor:UIColor = UIColor.lightGrayColor()
@@ -134,6 +112,7 @@ public class RMActionSheetController: UIViewController {
             ])
         
         let titleView = self.createTitleView(self.title, message:self.message)
+        titleView.addConstraint(NSLayoutConstraint(item: titleView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 150.0))
         buttonStackView.addArrangedSubview(titleView)
         let separator = RMSeparatorView()
         separator.lineColor = self.separatorColor
@@ -143,7 +122,7 @@ public class RMActionSheetController: UIViewController {
         for (index, action) in self.actions.enumerate() {
             let button = UIButton(type: .System)
             button.titleLabel?.numberOfLines = 0
-
+            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = NSTextAlignment.Center
             var attributes = [NSParagraphStyleAttributeName:paragraphStyle, NSFontAttributeName: self.itemTitleFont]
@@ -172,7 +151,7 @@ public class RMActionSheetController: UIViewController {
             }
             button.addTarget(self, action: Selector("itemTapped:"), forControlEvents: .TouchUpInside)
             buttonStackView.addArrangedSubview(button)
-
+            
             if index < (self.actions.count-1) {
                 let separator = RMSeparatorView()
                 separator.lineColor = self.separatorColor
@@ -187,46 +166,9 @@ public class RMActionSheetController: UIViewController {
     }
     
     func createTitleView(title:String?, message:String?) -> UIView {
-
-        let gap:CGFloat = 0.0
-        let verticalPadding:CGFloat = 13.0
-        let horizontalPadding:CGFloat = 10.0
         
         let titleView = UIView()
         titleView.backgroundColor = UIColor.whiteColor()
-        
-        let titleLabel = UILabel()
-        titleLabel.textAlignment = .Center
-        titleLabel.textColor = self.titleColor
-        titleLabel.font = self.titleFont
-        titleLabel.text = title
-        
-        let detailLabel = UILabel()
-        detailLabel.textAlignment = .Center
-        detailLabel.numberOfLines = 0
-        detailLabel.textColor = self.messageColor
-        detailLabel.font = self.messageFont
-        detailLabel.text = message
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleView.addSubview(titleLabel)
-        detailLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleView.addSubview(detailLabel)
-        
-        titleView.addConstraints([
-            NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: titleView, attribute: .Top, multiplier: 1.0, constant: verticalPadding),
-            NSLayoutConstraint(item: titleLabel, attribute: .Leading, relatedBy: .GreaterThanOrEqual, toItem: titleView, attribute: .Leading, multiplier: 1.0, constant: horizontalPadding),
-            NSLayoutConstraint(item: titleLabel, attribute: .Trailing, relatedBy: .LessThanOrEqual, toItem: titleView, attribute: .Trailing, multiplier: 1.0, constant: -horizontalPadding),
-            NSLayoutConstraint(item: titleLabel, attribute: .CenterX, relatedBy: .Equal, toItem: titleView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
-            ])
-        titleView.addConstraints([
-            NSLayoutConstraint(item: detailLabel, attribute: .Top, relatedBy: .Equal, toItem: titleLabel, attribute: .Bottom, multiplier: 1.0, constant: gap),
-            NSLayoutConstraint(item: detailLabel, attribute: .Bottom, relatedBy: .Equal, toItem: titleView, attribute: .Bottom, multiplier: 1.0, constant: -verticalPadding),
-            NSLayoutConstraint(item: detailLabel, attribute: .Leading, relatedBy: .GreaterThanOrEqual, toItem: titleView, attribute: .Leading, multiplier: 1.0, constant: horizontalPadding),
-            NSLayoutConstraint(item: detailLabel, attribute: .Trailing, relatedBy: .LessThanOrEqual, toItem: titleView, attribute: .Trailing, multiplier: 1.0, constant: -horizontalPadding),
-            NSLayoutConstraint(item: detailLabel, attribute: .CenterX, relatedBy: .Equal, toItem: titleView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
-            ])
-
         return titleView
     }
     
@@ -252,4 +194,3 @@ public class RMActionSheetController: UIViewController {
         }
     }
 }
-

@@ -55,6 +55,20 @@ class ViewController: UIViewController {
         self.presentViewController(viewController, animated: true, completion: nil)
     }
 
+    @IBAction func showCustomActionSheet2() {
+        let viewController = CustomTextActionSheetController(title: "Title", message: "Message")
+        viewController.addAction(RMActionSheetAction(title: "First option", subtitle: nil, type: .Default, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        viewController.addAction(RMActionSheetAction(title: "Second option", subtitle: nil, type: .Default, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        viewController.addAction(RMActionSheetAction(title: "Cancel", subtitle: nil, type: .Cancel, handler: { (action) -> Void in
+            print(action.title)
+        }))
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
+
     
     @IBAction func showAlert() {
         let viewController = AlertViewController()
