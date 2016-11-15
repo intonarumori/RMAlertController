@@ -8,7 +8,9 @@
 
 import UIKit
 
-public class RMActionSheetTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+// MARK: -
+
+public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
 
     var transitionDuration:NSTimeInterval = 0.4
     var backgroundAlpha:CGFloat = 0.4
@@ -18,25 +20,28 @@ public class RMActionSheetTransition: NSObject, UIViewControllerTransitioningDel
 
     var horizontalPadding:CGFloat = 10.0
     var verticalPadding:CGFloat = 10.0
+    
+    var tapHandler:(Void->Void)?
 
     private var fadeView:UIView?
     private var isDismissing:Bool = false
     
-    private weak var presentedViewController:UIViewController?
     private weak var presentingViewController:UIViewController?
+    private weak var presentedViewController:UIViewController?
+    
     private weak var bottomConstraint:NSLayoutConstraint?
+    
+    // MARK:
     
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = false
-        self.presentedViewController = presented
         self.presentingViewController = presenting
+        self.presentedViewController = presented
         return self
     }
     
     public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = true
-        self.presentedViewController = nil
-        self.presentingViewController = nil
         return self
     }
     
@@ -48,17 +53,14 @@ public class RMActionSheetTransition: NSObject, UIViewControllerTransitioningDel
     
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
-        guard let containerView = transitionContext.containerView() else {
-            return
-        }
+        let containerView = transitionContext.containerView()
         
         if isDismissing {
             
             let duration = self.transitionDuration(transitionContext)
             
-            if let
-                bottomConstraint = self.bottomConstraint,
-                fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
+            if let bottomConstraint = self.bottomConstraint,
+                let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
 
                 let height = fromView.frame.height
                 
