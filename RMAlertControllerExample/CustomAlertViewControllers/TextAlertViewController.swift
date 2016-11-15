@@ -18,11 +18,11 @@ class TextAlertViewController: UIViewController, UITextViewDelegate {
     
     let transitionDelegate:UIViewControllerTransitioningDelegate?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.transitionDelegate = RMAlertTransition()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.transitioningDelegate = self.transitionDelegate
-        self.modalPresentationStyle = .Custom
+        self.modalPresentationStyle = .custom
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -31,12 +31,12 @@ class TextAlertViewController: UIViewController, UITextViewDelegate {
     
     // MARK:
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.textView?.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.textView?.resignFirstResponder()
     }
@@ -54,7 +54,7 @@ class TextAlertViewController: UIViewController, UITextViewDelegate {
     
     // MARK:
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         self.updateTextViewScrolling()
     }
 
@@ -65,13 +65,13 @@ class TextAlertViewController: UIViewController, UITextViewDelegate {
             return
         }
         
-        let textHeight = textView.sizeThatFits(CGSize(width: textView.bounds.width, height: CGFloat.max)).height
+        let textHeight = textView.sizeThatFits(CGSize(width: textView.bounds.width, height: CGFloat.greatestFiniteMagnitude)).height
         
         let textViewHeight = min(maximumTextHeight, max(minimumTextHeight, textHeight))
         let shouldScroll = (textViewHeight < textHeight)
         
-        if textView.scrollEnabled != shouldScroll {
-            textView.scrollEnabled = shouldScroll
+        if textView.isScrollEnabled != shouldScroll {
+            textView.isScrollEnabled = shouldScroll
         }
         self.textViewHeightConstraint?.constant = textViewHeight
     }
@@ -85,6 +85,6 @@ class TextAlertViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func close() {
         self.resignFirstResponder()
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

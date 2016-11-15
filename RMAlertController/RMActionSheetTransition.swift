@@ -10,9 +10,9 @@ import UIKit
 
 // MARK: -
 
-public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+open class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
 
-    var transitionDuration:NSTimeInterval = 0.4
+    var transitionDuration:TimeInterval = 0.4
     var backgroundAlpha:CGFloat = 0.4
     var springDamping:CGFloat = 1.0
     var dismissEnabledWithBackgroundTap:Bool = true
@@ -21,55 +21,55 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
     var horizontalPadding:CGFloat = 10.0
     var verticalPadding:CGFloat = 10.0
     
-    var tapHandler:(Void->Void)?
+    var tapHandler:((Void)->Void)?
 
-    private var fadeView:UIView?
-    private var isDismissing:Bool = false
+    fileprivate var fadeView:UIView?
+    fileprivate var isDismissing:Bool = false
     
-    private weak var presentingViewController:UIViewController?
-    private weak var presentedViewController:UIViewController?
+    fileprivate weak var presentingViewController:UIViewController?
+    fileprivate weak var presentedViewController:UIViewController?
     
-    private weak var bottomConstraint:NSLayoutConstraint?
+    fileprivate weak var bottomConstraint:NSLayoutConstraint?
     
     // MARK:
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = false
         self.presentingViewController = presenting
         self.presentedViewController = presented
         return self
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = true
         return self
     }
     
     // MARK:
     
-    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return transitionDuration
     }
     
-    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
-        let containerView = transitionContext.containerView()
+        let containerView = transitionContext.containerView
         
         if isDismissing {
             
-            let duration = self.transitionDuration(transitionContext)
+            let duration = self.transitionDuration(using: transitionContext)
             
             if let bottomConstraint = self.bottomConstraint,
-                let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) {
+                let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) {
 
                 let height = fromView.frame.height
                 
-                UIView.animateWithDuration(
-                    duration,
+                UIView.animate(
+                    withDuration: duration,
                     delay: 0.0,
                     usingSpringWithDamping: springDamping,
                     initialSpringVelocity: 0.0,
-                    options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                    options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
                         bottomConstraint.constant = height + 10.0
                         containerView.layoutIfNeeded()
                     }, completion: { (finished) -> Void in
@@ -82,10 +82,10 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
             let fadeDuration = duration * backgroundFadeDurationPercent
             
             let fadeView = self.fadeView
-            UIView.animateWithDuration(
-                fadeDuration,
+            UIView.animate(
+                withDuration: fadeDuration,
                 delay: 0.0,
-                options: UIViewAnimationOptions.CurveLinear,
+                options: UIViewAnimationOptions.curveLinear,
                 animations: { () -> Void in
                     fadeView?.alpha = 0.0
                 },
@@ -94,35 +94,35 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
             // animate tintcolors
             
             if let window = containerView.window {
-                UIView.animateWithDuration(fadeDuration, animations: { () -> Void in
-                    window.tintAdjustmentMode = .Normal
+                UIView.animate(withDuration: fadeDuration, animations: { () -> Void in
+                    window.tintAdjustmentMode = .normal
                 })
             }
             
         } else {
             
             if
-                let toView = transitionContext.viewForKey(UITransitionContextToViewKey) {
+                let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) {
                     
                     let fadeView = UIView(frame: containerView.bounds)
                     fadeView.backgroundColor = UIColor(white: 0.0, alpha: backgroundAlpha)
                     if dismissEnabledWithBackgroundTap {
-                        fadeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("backgroundTapped:")))
+                        fadeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(RMActionSheetTransition.backgroundTapped(_:))))
                     }
-                    fadeView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                    fadeView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     containerView.addSubview(fadeView)
                     self.fadeView = fadeView
                     
                     var fittingSize = UILayoutFittingCompressedSize
                     fittingSize.width = containerView.bounds.width - 2 * horizontalPadding
-                    let size = toView.systemLayoutSizeFittingSize(fittingSize, withHorizontalFittingPriority: 1000, verticalFittingPriority: 750)
+                    let size = toView.systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: 1000, verticalFittingPriority: 750)
                     
                     toView.translatesAutoresizingMaskIntoConstraints = false
                     containerView.addSubview(toView)
                     
-                    let bottomConstraint = NSLayoutConstraint(item: toView, attribute: .Bottom, relatedBy: .Equal, toItem: containerView, attribute: .Bottom, multiplier: 1.0, constant: -verticalPadding)
-                    let leadingConstraint = NSLayoutConstraint(item: toView, attribute: .Leading, relatedBy: .Equal, toItem: containerView, attribute: .Leading, multiplier: 1.0, constant: horizontalPadding)
-                    let trailingConstraint = NSLayoutConstraint(item: toView, attribute: .Trailing, relatedBy: .Equal, toItem: containerView, attribute: .Trailing, multiplier: 1.0, constant: -horizontalPadding)
+                    let bottomConstraint = NSLayoutConstraint(item: toView, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -verticalPadding)
+                    let leadingConstraint = NSLayoutConstraint(item: toView, attribute: .leading, relatedBy: .equal, toItem: containerView, attribute: .leading, multiplier: 1.0, constant: horizontalPadding)
+                    let trailingConstraint = NSLayoutConstraint(item: toView, attribute: .trailing, relatedBy: .equal, toItem: containerView, attribute: .trailing, multiplier: 1.0, constant: -horizontalPadding)
                     
                     bottomConstraint.constant = size.height
                     containerView.addConstraints([leadingConstraint, trailingConstraint, bottomConstraint])
@@ -130,13 +130,13 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
                     
                     self.bottomConstraint = bottomConstraint
                     
-                    let duration = self.transitionDuration(transitionContext)
+                    let duration = self.transitionDuration(using: transitionContext)
                     
-                    UIView.animateWithDuration(duration,
+                    UIView.animate(withDuration: duration,
                         delay: 0.0,
                         usingSpringWithDamping: springDamping,
                         initialSpringVelocity: 0.0,
-                        options: UIViewAnimationOptions.CurveEaseOut,
+                        options: UIViewAnimationOptions.curveEaseOut,
                         animations: { () -> Void in
                             bottomConstraint.constant = -self.verticalPadding
                             containerView.layoutIfNeeded()
@@ -149,26 +149,26 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
                     let fadeDuration = duration * backgroundFadeDurationPercent
                     
                     fadeView.alpha = 0.0
-                    UIView.animateWithDuration(fadeDuration,
-                        delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+                    UIView.animate(withDuration: fadeDuration,
+                        delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
                             fadeView.alpha = 1.0
                         }, completion: nil)
                     
                     // animate tintcolors
                     
                     if let window = containerView.window {
-                        UIView.animateWithDuration(fadeDuration, animations: { () -> Void in
-                            window.tintAdjustmentMode = .Dimmed
+                        UIView.animate(withDuration: fadeDuration, animations: { () -> Void in
+                            window.tintAdjustmentMode = .dimmed
                         })
                     }
-                    containerView.tintAdjustmentMode = .Normal
+                    containerView.tintAdjustmentMode = .normal
             }
         }
     }
     
     // MARK: User actions
     
-    func backgroundTapped(tap:UITapGestureRecognizer) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    func backgroundTapped(_ tap:UITapGestureRecognizer) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

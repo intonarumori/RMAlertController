@@ -12,11 +12,11 @@ import UIKit
 @IBDesignable
 class RMSeparatorView: UIView {
     
-    @IBInspectable var lineColor:UIColor = UIColor.grayColor()
+    @IBInspectable var lineColor:UIColor = UIColor.gray
     
-    override var opaque:Bool {
+    override var isOpaque:Bool {
         set { /* prevent setting */ }
-        get { return super.opaque }
+        get { return super.isOpaque }
     }
     override var backgroundColor:UIColor? {
         set { /* prevent setting */ }
@@ -34,24 +34,24 @@ class RMSeparatorView: UIView {
     }
     
     func setupSeparatorView() {
-        super.opaque = false
-        self.userInteractionEnabled = false
-        self.backgroundColor = UIColor.clearColor()
+        super.isOpaque = false
+        self.isUserInteractionEnabled = false
+        self.backgroundColor = UIColor.clear
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
-        let lineWidth:CGFloat = UIScreen.mainScreen().scale > 1.0 ? 0.5 : 1.0
+        let lineWidth:CGFloat = UIScreen.main.scale > 1.0 ? 0.5 : 1.0
         let lineRect = CGRect(origin: CGPoint.zero, size: CGSize(width: self.bounds.width, height: lineWidth))
         if let context = UIGraphicsGetCurrentContext() {
-            CGContextClearRect(context, rect)
-            CGContextSetFillColorWithColor(context, self.lineColor.CGColor)
-            CGContextFillRect(context, lineRect)
+            context.clear(rect)
+            context.setFillColor(self.lineColor.cgColor)
+            context.fill(lineRect)
         }
     }
     
-    override func intrinsicContentSize() -> CGSize {
-        let lineWidth:CGFloat = UIScreen.mainScreen().scale > 1.0 ? 0.5 : 1.0
+    override var intrinsicContentSize : CGSize {
+        let lineWidth:CGFloat = UIScreen.main.scale > 1.0 ? 0.5 : 1.0
         let size = CGSize(width: self.bounds.width, height: lineWidth)
         return size
     }

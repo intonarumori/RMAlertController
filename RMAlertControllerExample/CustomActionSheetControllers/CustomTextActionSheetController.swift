@@ -9,26 +9,26 @@
 import UIKit
 import OAStackView
 
-public class CustomTextActionSheetController: UIViewController {
+open class CustomTextActionSheetController: UIViewController {
 
     let cornerRadius:CGFloat = 15.0
     let sectionSpacing:CGFloat = 2.0
     
-    var titleColor:UIColor = UIColor.lightGrayColor()
-    var messageColor:UIColor = UIColor.lightGrayColor()
+    var titleColor:UIColor = UIColor.lightGray
+    var messageColor:UIColor = UIColor.lightGray
     
-    var titleFont:UIFont = UIFont.boldSystemFontOfSize(13.0)
-    var messageFont:UIFont = UIFont.systemFontOfSize(13.0)
-    var itemTitleFont:UIFont = UIFont.systemFontOfSize(19.0)
-    var itemSubtitleFont:UIFont = UIFont.systemFontOfSize(11.0)
-    var cancelTitleFont:UIFont = UIFont.boldSystemFontOfSize(19.0)
+    var titleFont:UIFont = UIFont.boldSystemFont(ofSize: 13.0)
+    var messageFont:UIFont = UIFont.systemFont(ofSize: 13.0)
+    var itemTitleFont:UIFont = UIFont.systemFont(ofSize: 19.0)
+    var itemSubtitleFont:UIFont = UIFont.systemFont(ofSize: 11.0)
+    var cancelTitleFont:UIFont = UIFont.boldSystemFont(ofSize: 19.0)
     var separatorColor:UIColor = UIColor(white: 0.9, alpha: 1.0)
     
-    var itemDestructiveTextColor:UIColor = UIColor.redColor()
+    var itemDestructiveTextColor:UIColor = UIColor.red
     var itemTitleTextColor:UIColor? = nil
     
     var stackView:OAStackView? {
-        return self.isViewLoaded() ? (self.view as? OAStackView) : nil
+        return self.isViewLoaded ? (self.view as? OAStackView) : nil
     }
     
     var message:String?
@@ -47,7 +47,7 @@ public class CustomTextActionSheetController: UIViewController {
         self.message = message
         self.title = title
         
-        self.modalPresentationStyle = .Custom
+        self.modalPresentationStyle = .custom
         self.transitioningDelegate = actionSheetTransition
     }
     
@@ -57,9 +57,9 @@ public class CustomTextActionSheetController: UIViewController {
     
     // MARK:
     
-    func addAction(action:RMActionSheetAction) {
+    func addAction(_ action:RMActionSheetAction) {
         switch action.type {
-        case .Cancel:
+        case .cancel:
             self.cancelAction = action
         default:
             self.actions.append(action)
@@ -68,14 +68,14 @@ public class CustomTextActionSheetController: UIViewController {
     
     // MARK:
     
-    override public func loadView() {
+    override open func loadView() {
         let view = OAStackView()
-        view.axis = .Vertical
+        view.axis = .vertical
         view.spacing = sectionSpacing
         self.view = view
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         self.stackView?.addArrangedSubview(self.createButtonView())
@@ -85,14 +85,14 @@ public class CustomTextActionSheetController: UIViewController {
         }
     }
     
-    func createCancelButton(action:RMActionSheetAction) -> UIButton {
-        let button = UIButton(type: .System)
-        button.setTitle(action.title, forState: .Normal)
+    func createCancelButton(_ action:RMActionSheetAction) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(action.title, for: UIControlState())
         button.titleLabel?.font = self.cancelTitleFont
         button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        button.backgroundColor = UIColor.whiteColor()
+        button.backgroundColor = UIColor.white
         button.layer.cornerRadius = cornerRadius
-        button.addTarget(self, action: #selector(CustomTextActionSheetController.cancel), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(CustomTextActionSheetController.cancel), for: .touchUpInside)
         return button
     }
     
@@ -103,32 +103,32 @@ public class CustomTextActionSheetController: UIViewController {
         view.clipsToBounds = true
         
         let buttonStackView = OAStackView()
-        buttonStackView.axis = .Vertical
+        buttonStackView.axis = .vertical
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonStackView)
         view.addConstraints([
-            NSLayoutConstraint(item: buttonStackView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: buttonStackView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: buttonStackView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: buttonStackView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: buttonStackView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: buttonStackView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: buttonStackView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: buttonStackView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
             ])
         
         let titleView = self.createTitleView(self.title, message:self.message)
-        titleView.addConstraint(NSLayoutConstraint(item: titleView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 150.0))
+        titleView.addConstraint(NSLayoutConstraint(item: titleView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 150.0))
         buttonStackView.addArrangedSubview(titleView)
         let separator = RMSeparatorView()
         separator.lineColor = self.separatorColor
         buttonStackView.addArrangedSubview(separator)
         
         var counter = 0
-        for (index, action) in self.actions.enumerate() {
-            let button = UIButton(type: .System)
+        for (index, action) in self.actions.enumerated() {
+            let button = UIButton(type: .system)
             button.titleLabel?.numberOfLines = 0
             
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = NSTextAlignment.Center
-            var attributes = [NSParagraphStyleAttributeName:paragraphStyle, NSFontAttributeName: self.itemTitleFont]
-            if action.type == .Destructive {
+            paragraphStyle.alignment = NSTextAlignment.center
+            var attributes = [NSParagraphStyleAttributeName:paragraphStyle, NSFontAttributeName: self.itemTitleFont] as [String : Any]
+            if action.type == .destructive {
                 attributes[NSForegroundColorAttributeName] = self.itemDestructiveTextColor
             } else {
                 if let itemTitleTextColor = self.itemTitleTextColor {
@@ -138,20 +138,20 @@ public class CustomTextActionSheetController: UIViewController {
             
             let attributedString = NSMutableAttributedString(string: action.title, attributes: attributes)
             if let subtitle = action.subtitle {
-                attributedString.appendAttributedString(NSAttributedString(string: "\n"))
+                attributedString.append(NSAttributedString(string: "\n"))
                 let range = NSMakeRange(attributedString.length, subtitle.characters.count)
-                attributedString.appendAttributedString(NSAttributedString(string: subtitle))
+                attributedString.append(NSAttributedString(string: subtitle))
                 attributes[NSFontAttributeName] = self.itemSubtitleFont
                 attributedString.setAttributes(attributes, range: range)
             }
             
-            button.setAttributedTitle(attributedString, forState: .Normal)
+            button.setAttributedTitle(attributedString, for: UIControlState())
             button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-            button.backgroundColor = UIColor.whiteColor()
-            if action.type == .Destructive {
-                button.setTitleColor(UIColor.redColor(), forState: .Normal)
+            button.backgroundColor = UIColor.white
+            if action.type == .destructive {
+                button.setTitleColor(UIColor.red, for: UIControlState())
             }
-            button.addTarget(self, action: #selector(CustomTextActionSheetController.itemTapped(_:)), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(CustomTextActionSheetController.itemTapped(_:)), for: .touchUpInside)
             buttonStackView.addArrangedSubview(button)
             
             if index < (self.actions.count-1) {
@@ -167,28 +167,28 @@ public class CustomTextActionSheetController: UIViewController {
         return view
     }
     
-    func createTitleView(title:String?, message:String?) -> UIView {
+    func createTitleView(_ title:String?, message:String?) -> UIView {
         
         let titleView = UIView()
-        titleView.backgroundColor = UIColor.whiteColor()
+        titleView.backgroundColor = UIColor.white
         return titleView
     }
     
     // MARK: User actions
     
-    func itemTapped(button:UIButton) {
+    func itemTapped(_ button:UIButton) {
         let index = button.tag
         if index >= 0 && index < self.actions.count {
             let action = actions[index]
             action.handler(action)
         }
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     func cancel() {
         if let cancelAction = self.cancelAction {
             cancelAction.handler(cancelAction)
-            self.presentingViewController?.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
                 if let cancelAction = self.cancelAction {
                     cancelAction.handler(cancelAction)
                 }

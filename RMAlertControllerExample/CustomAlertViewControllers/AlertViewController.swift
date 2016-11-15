@@ -12,11 +12,11 @@ class AlertViewController: UIViewController {
 
     let transitionDelegate:UIViewControllerTransitioningDelegate
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.transitionDelegate = RMAlertTransition()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.transitioningDelegate = self.transitionDelegate
-        self.modalPresentationStyle = .Custom
+        self.modalPresentationStyle = .custom
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +30,6 @@ class AlertViewController: UIViewController {
     }
     
     @IBAction func tapped() {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

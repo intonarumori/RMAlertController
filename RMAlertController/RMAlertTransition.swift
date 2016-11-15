@@ -16,10 +16,10 @@
 
 import UIKit
 
-public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
-    var showDuration:NSTimeInterval = 0.5
-    var hideDuration:NSTimeInterval = 0.3
+    var showDuration:TimeInterval = 0.5
+    var hideDuration:TimeInterval = 0.3
     
     var backgroundAlpha:CGFloat = 0.4
     var springDamping:CGFloat = 0.7
@@ -32,19 +32,19 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     var horizontalPadding:CGFloat = 20.0
     var verticalPadding:CGFloat = 20.0
 
-    private var fadeView:UIView?
-    private var contentView:UIView?
+    fileprivate var fadeView:UIView?
+    fileprivate var contentView:UIView?
 
-    private var isDismissing:Bool = false
+    fileprivate var isDismissing:Bool = false
     
-    private weak var presentedViewController:UIViewController?
-    private weak var presentingViewController:UIViewController?
-    private weak var containerView:UIView?
+    fileprivate weak var presentedViewController:UIViewController?
+    fileprivate weak var presentingViewController:UIViewController?
+    fileprivate weak var containerView:UIView?
     
-    private var centerYConstraint:NSLayoutConstraint?
-    private var bottomConstraint:NSLayoutConstraint?
-    private var centerYConstant:CGFloat = 0.0
-    private var bottomConstant:CGFloat = 0.0
+    fileprivate var centerYConstraint:NSLayoutConstraint?
+    fileprivate var bottomConstraint:NSLayoutConstraint?
+    fileprivate var centerYConstant:CGFloat = 0.0
+    fileprivate var bottomConstant:CGFloat = 0.0
     
     override init() {
         super.init()
@@ -53,19 +53,19 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     }
     
     func addObservers() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RMAlertTransition.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RMAlertTransition.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RMAlertTransition.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RMAlertTransition.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func removeObservers() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK:
     
-    func keyboardWillShow(notification:NSNotification) {
+    func keyboardWillShow(_ notification:Notification) {
         
-        if let endFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+        if let endFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             let height = endFrame.height
             centerYConstant = -height / 2.0
@@ -73,18 +73,18 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
             
             if let
                 centerYConstraint = self.centerYConstraint,
-                bottomConstraint = self.bottomConstraint {
+                let bottomConstraint = self.bottomConstraint {
                     
                 centerYConstraint.constant = centerYConstant
                 bottomConstraint.constant = bottomConstant
-                UIView.animateWithDuration(0.33, animations: { () -> Void in
+                UIView.animate(withDuration: 0.33, animations: { () -> Void in
                     self.containerView?.layoutIfNeeded()
                 })
             }
         }
     }
 
-    func keyboardWillHide(notification:NSNotification) {
+    func keyboardWillHide(_ notification:Notification) {
 
         centerYConstant = 0.0
         bottomConstant = verticalPadding
@@ -98,7 +98,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
             bottomConstraint.constant = bottomConstant
             centerYConstraint.constant = centerYConstant
                 
-            UIView.animateWithDuration(duration,
+            UIView.animate(withDuration: duration,
                 delay: 0,
                 options: UIViewAnimationOptions(rawValue: curve),
                 animations: {
@@ -111,14 +111,14 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     
     // MARK:
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = false
         self.presentedViewController = presented
         self.presentingViewController = presenting
         return self
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = true
         self.presentedViewController = nil
         self.presentingViewController = nil
@@ -127,13 +127,13 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     
     // MARK:
     
-    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.isDismissing ? hideDuration : showDuration
     }
     
-    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
-        let containerView = transitionContext.containerView()
+        let containerView = transitionContext.containerView
         
         self.containerView = containerView
         
@@ -141,14 +141,14 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
             
             if let contentView = self.contentView {
                 
-                let duration = self.transitionDuration(transitionContext)
+                let duration = self.transitionDuration(using: transitionContext)
 
-                UIView.animateWithDuration(duration,
+                UIView.animate(withDuration: duration,
                     delay:0.0,
-                    options: UIViewAnimationOptions.CurveEaseIn,
+                    options: UIViewAnimationOptions.curveEaseIn,
                     animations: { () -> Void in
                         
-                        contentView.transform = CGAffineTransformMakeTranslation(0, containerView.bounds.height/2.0 + contentView.bounds.height/2.0)
+                        contentView.transform = CGAffineTransform(translationX: 0, y: containerView.bounds.height/2.0 + contentView.bounds.height/2.0)
                     }, completion: { (finished) -> Void in
                         transitionContext.completeTransition(finished)
                 })
@@ -156,12 +156,12 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                 // animate fadeview
             
                 let fadeView = self.fadeView
-                let fadeDuration = self.transitionDuration(transitionContext) * backgroundFadeDurationPercent
+                let fadeDuration = self.transitionDuration(using: transitionContext) * backgroundFadeDurationPercent
                 let fadeDelay = duration - fadeDuration
-                UIView.animateWithDuration(
-                    fadeDuration,
+                UIView.animate(
+                    withDuration: fadeDuration,
                     delay: fadeDelay,
-                    options: UIViewAnimationOptions.CurveLinear,
+                    options: UIViewAnimationOptions.curveLinear,
                     animations: { () -> Void in
                         fadeView?.alpha = 0.0
                     },
@@ -170,10 +170,10 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                 // animate tintcolors
                 
                 if let window = containerView.window {
-                    UIView.animateWithDuration(
-                        fadeDuration,
+                    UIView.animate(
+                        withDuration: fadeDuration,
                         animations: { () -> Void in
-                            window.tintAdjustmentMode = .Normal
+                            window.tintAdjustmentMode = .normal
                         })
                 }
             }
@@ -181,16 +181,16 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
         } else {
             
             if
-                let toView = transitionContext.viewForKey(UITransitionContextToViewKey) {
+                let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) {
                     
                     // Create fadeview
                     
                     let fadeView = UIView(frame: containerView.bounds)
                     fadeView.backgroundColor = UIColor(white: 0.0, alpha: backgroundAlpha)
                     if dismissEnabledWithBackgroundTap {
-                        fadeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("backgroundTapped:")))
+                        fadeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(RMAlertTransition.backgroundTapped(_:))))
                     }
-                    fadeView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                    fadeView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     containerView.addSubview(fadeView)
                     self.fadeView = fadeView
                     
@@ -206,10 +206,10 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                     toView.translatesAutoresizingMaskIntoConstraints = false
                     contentView.addSubview(toView)
                     contentView.addConstraints([
-                        NSLayoutConstraint(item: toView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1.0, constant: 0.0),
-                        NSLayoutConstraint(item: toView, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
-                        NSLayoutConstraint(item: toView, attribute: .Leading, relatedBy: .Equal, toItem: contentView, attribute: .Leading, multiplier: 1.0, constant: 0.0),
-                        NSLayoutConstraint(item: toView, attribute: .Trailing, relatedBy: .Equal, toItem: contentView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+                        NSLayoutConstraint(item: toView, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: 0.0),
+                        NSLayoutConstraint(item: toView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+                        NSLayoutConstraint(item: toView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1.0, constant: 0.0),
+                        NSLayoutConstraint(item: toView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1.0, constant: 0.0)
                         ])
 
                     
@@ -218,15 +218,15 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                     contentView.translatesAutoresizingMaskIntoConstraints = false
                     containerView.addSubview(contentView)
                     
-                    let topConstraint = NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: containerView, attribute: .Top, multiplier: 1.0, constant: self.verticalPadding)
-                    let bottomConstraint = NSLayoutConstraint(item: contentView, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: containerView, attribute: .Bottom, multiplier: 1.0, constant: self.bottomConstant)
-                    let centerYConstraint = NSLayoutConstraint(item: contentView, attribute: .CenterY, relatedBy: .Equal, toItem: containerView, attribute: .CenterY, multiplier: 1.0, constant: self.centerYConstant)
+                    let topConstraint = NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: containerView, attribute: .top, multiplier: 1.0, constant: self.verticalPadding)
+                    let bottomConstraint = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: self.bottomConstant)
+                    let centerYConstraint = NSLayoutConstraint(item: contentView, attribute: .centerY, relatedBy: .equal, toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: self.centerYConstant)
                     centerYConstraint.priority = 750
-                    let minimumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: self.minimumWidth)
-                    let maximumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .LessThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: self.maximumWidth)
-                    let centerXConstraint = NSLayoutConstraint(item: contentView, attribute: .CenterX, relatedBy: .Equal, toItem: containerView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
-                    let leadingConstraint = NSLayoutConstraint(item: contentView, attribute: .Leading, relatedBy: .GreaterThanOrEqual, toItem: containerView, attribute: .Leading, multiplier: 1.0, constant: horizontalPadding)
-                    let trailingConstraint = NSLayoutConstraint(item: contentView, attribute: .Trailing, relatedBy: .LessThanOrEqual, toItem: containerView, attribute: .Trailing, multiplier: 1.0, constant: -horizontalPadding)
+                    let minimumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.minimumWidth)
+                    let maximumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.maximumWidth)
+                    let centerXConstraint = NSLayoutConstraint(item: contentView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+                    let leadingConstraint = NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .greaterThanOrEqual, toItem: containerView, attribute: .leading, multiplier: 1.0, constant: horizontalPadding)
+                    let trailingConstraint = NSLayoutConstraint(item: contentView, attribute: .trailing, relatedBy: .lessThanOrEqual, toItem: containerView, attribute: .trailing, multiplier: 1.0, constant: -horizontalPadding)
                     containerView.addConstraints([leadingConstraint, trailingConstraint, centerYConstraint, topConstraint, bottomConstraint, centerXConstraint, minimumWidthConstraint, maximumWidthConstraint])
                     self.contentView = contentView
                     self.centerYConstraint = centerYConstraint
@@ -235,17 +235,17 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                     
                     // Animate appearances
                     
-                    let duration = self.transitionDuration(transitionContext)
+                    let duration = self.transitionDuration(using: transitionContext)
                     
-                    contentView.transform = CGAffineTransformMakeScale(0.2, 0.2)
-                    UIView.animateWithDuration(
-                        duration,
+                    contentView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+                    UIView.animate(
+                        withDuration: duration,
                         delay: 0.0,
                         usingSpringWithDamping: springDamping,
                         initialSpringVelocity: 0.0,
-                        options: UIViewAnimationOptions.CurveEaseOut,
+                        options: UIViewAnimationOptions.curveEaseOut,
                         animations: { () -> Void in
-                            contentView.transform = CGAffineTransformIdentity
+                            contentView.transform = CGAffineTransform.identity
                         }, completion: { (finished) -> Void in
                             transitionContext.completeTransition(finished)
                         })
@@ -255,10 +255,10 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                     let fadeDuration = duration * backgroundFadeDurationPercent
 
                     fadeView.alpha = 0.0
-                    UIView.animateWithDuration(
-                        fadeDuration,
+                    UIView.animate(
+                        withDuration: fadeDuration,
                         delay: 0.0,
-                        options: UIViewAnimationOptions.CurveLinear,
+                        options: UIViewAnimationOptions.curveLinear,
                         animations: { () -> Void in
                             fadeView.alpha = 1.0
                         },
@@ -267,20 +267,20 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                     // animate tintcolors
                     
                     if let window = containerView.window {
-                        UIView.animateWithDuration(
-                            fadeDuration,
+                        UIView.animate(
+                            withDuration: fadeDuration,
                             animations: { () -> Void in
-                                window.tintAdjustmentMode = .Dimmed
+                                window.tintAdjustmentMode = .dimmed
                             })
                     }
-                    containerView.tintAdjustmentMode = .Normal
+                    containerView.tintAdjustmentMode = .normal
             }
         }
     }
     
     // MARK: User actions
     
-    func backgroundTapped(tap:UITapGestureRecognizer) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    func backgroundTapped(_ tap:UITapGestureRecognizer) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
