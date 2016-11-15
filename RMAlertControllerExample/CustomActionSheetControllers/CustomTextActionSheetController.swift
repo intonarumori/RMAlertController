@@ -36,12 +36,10 @@ open class CustomTextActionSheetController: UIViewController {
     var actions:Array<RMActionSheetAction> = []
     var cancelAction:RMActionSheetAction?
     
-    var actionSheetTransition:RMActionSheetTransition
+    let actionSheetTransition = RMActionSheetTransition()
     
     init(title:String, message:String) {
 
-        self.actionSheetTransition = RMActionSheetTransition()
-        
         super.init(nibName: nil, bundle: nil)
         
         self.message = message

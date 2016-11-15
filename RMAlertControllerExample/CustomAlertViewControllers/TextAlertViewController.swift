@@ -16,12 +16,13 @@ class TextAlertViewController: UIViewController, UITextViewDelegate {
     let minimumTextHeight:CGFloat = 65.0
     let maximumTextHeight:CGFloat = 150.0
     
-    let transitionDelegate:UIViewControllerTransitioningDelegate?
+    let alertTransition = RMAlertTransition()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        self.transitionDelegate = RMAlertTransition()
+        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.transitioningDelegate = self.transitionDelegate
+        
+        self.transitioningDelegate = alertTransition
         self.modalPresentationStyle = .custom
     }
 
