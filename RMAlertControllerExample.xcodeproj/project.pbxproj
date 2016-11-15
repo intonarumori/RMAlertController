@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D4E8DF5CD4E192CB6DCF0CA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E83E0B38F1E19E31D2BAED /* Pods.framework */; };
+		097D1ECA5522775BB2F32B5A /* Pods_RMAlertControllerExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 732B7ED8E563C1A9DDD2769E /* Pods_RMAlertControllerExampleTests.framework */; };
+		1C9BEDCDCD1662C79ADF88F0 /* Pods_RMAlertControllerExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDA9E1FCC4F1257BCF694B9 /* Pods_RMAlertControllerExample.framework */; };
 		A54D01531C8055B800826978 /* RMAlertTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01521C8055B800826978 /* RMAlertTransition.swift */; };
 		A54D01671C85947400826978 /* RMActionSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01661C85947400826978 /* RMActionSheetController.swift */; };
 		A54D01691C85B00300826978 /* RMSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54D01681C85B00300826978 /* RMSeparatorView.swift */; };
@@ -36,9 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		25BD12103E7BA98C58630AEB /* Pods-RMAlertControllerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMAlertControllerExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMAlertControllerExample/Pods-RMAlertControllerExample.debug.xcconfig"; sourceTree = "<group>"; };
+		333836CFC58FAF0CDC5E9100 /* Pods-RMAlertControllerExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMAlertControllerExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMAlertControllerExampleTests/Pods-RMAlertControllerExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4EDA9E1FCC4F1257BCF694B9 /* Pods_RMAlertControllerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMAlertControllerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E83E0B38F1E19E31D2BAED /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		732B7ED8E563C1A9DDD2769E /* Pods_RMAlertControllerExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMAlertControllerExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54D01521C8055B800826978 /* RMAlertTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAlertTransition.swift; sourceTree = "<group>"; };
 		A54D01661C85947400826978 /* RMActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetController.swift; sourceTree = "<group>"; };
 		A54D01681C85B00300826978 /* RMSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSeparatorView.swift; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 		A595EEE21C80395E006C1B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A595EEEE1C8042D3006C1B23 /* RMActionSheetTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetTransition.swift; sourceTree = "<group>"; };
 		A5B71CDE1C9091EE00AFDFBF /* CustomTextActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextActionSheetController.swift; sourceTree = "<group>"; };
+		B94E808A840E8813DB0C6B69 /* Pods-RMAlertControllerExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMAlertControllerExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMAlertControllerExampleTests/Pods-RMAlertControllerExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		C297DD75DEA94C12FFBC03FA /* Pods-RMAlertControllerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMAlertControllerExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMAlertControllerExample/Pods-RMAlertControllerExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D4E8DF5CD4E192CB6DCF0CA /* Pods.framework in Frameworks */,
+				1C9BEDCDCD1662C79ADF88F0 /* Pods_RMAlertControllerExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,17 +78,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				097D1ECA5522775BB2F32B5A /* Pods_RMAlertControllerExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3EED86CAA8ED4615A37E5BB9 /* Pods */ = {
+		5E195092D7263C96D502E7FF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */,
-				1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */,
+				25BD12103E7BA98C58630AEB /* Pods-RMAlertControllerExample.debug.xcconfig */,
+				C297DD75DEA94C12FFBC03FA /* Pods-RMAlertControllerExample.release.xcconfig */,
+				333836CFC58FAF0CDC5E9100 /* Pods-RMAlertControllerExampleTests.debug.xcconfig */,
+				B94E808A840E8813DB0C6B69 /* Pods-RMAlertControllerExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -106,8 +114,8 @@
 				A595EECA1C80395E006C1B23 /* RMAlertControllerExample */,
 				A595EEDF1C80395E006C1B23 /* RMAlertControllerExampleTests */,
 				A595EEC91C80395E006C1B23 /* Products */,
-				3EED86CAA8ED4615A37E5BB9 /* Pods */,
 				FD40FE049FDA7BD580D529CF /* Frameworks */,
+				5E195092D7263C96D502E7FF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				58E83E0B38F1E19E31D2BAED /* Pods.framework */,
+				4EDA9E1FCC4F1257BCF694B9 /* Pods_RMAlertControllerExample.framework */,
+				732B7ED8E563C1A9DDD2769E /* Pods_RMAlertControllerExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,12 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A595EEE51C80395E006C1B23 /* Build configuration list for PBXNativeTarget "RMAlertControllerExample" */;
 			buildPhases = (
-				C39261C8951930F54952DB28 /* Check Pods Manifest.lock */,
+				0D6B1FD24503DB62ACE47BFF /* [CP] Check Pods Manifest.lock */,
 				A595EEC41C80395E006C1B23 /* Sources */,
 				A595EEC51C80395E006C1B23 /* Frameworks */,
 				A595EEC61C80395E006C1B23 /* Resources */,
-				5DA8D2B807E9213444199CD7 /* Embed Pods Frameworks */,
-				E66FD8EB8551CC07DAA23EBA /* Copy Pods Resources */,
+				16BDFAEE33BDEA7387B9D3F7 /* [CP] Embed Pods Frameworks */,
+				2B99634040710F19EDA08D1E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,9 +208,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A595EEE81C80395E006C1B23 /* Build configuration list for PBXNativeTarget "RMAlertControllerExampleTests" */;
 			buildPhases = (
+				5AECBFFE25374DCF9069D391 /* [CP] Check Pods Manifest.lock */,
 				A595EED81C80395E006C1B23 /* Sources */,
 				A595EED91C80395E006C1B23 /* Frameworks */,
 				A595EEDA1C80395E006C1B23 /* Resources */,
+				440AA82F4879820618BCEEA2 /* [CP] Embed Pods Frameworks */,
+				A49B65A2A96CFAECC8D915F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,14 +232,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = rumori;
 				TargetAttributes = {
 					A595EEC71C80395E006C1B23 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					A595EEDB1C80395E006C1B23 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 						TestTargetID = A595EEC71C80395E006C1B23;
 					};
 				};
@@ -273,29 +288,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5DA8D2B807E9213444199CD7 /* Embed Pods Frameworks */ = {
+		0D6B1FD24503DB62ACE47BFF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C39261C8951930F54952DB28 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,19 +303,79 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E66FD8EB8551CC07DAA23EBA /* Copy Pods Resources */ = {
+		16BDFAEE33BDEA7387B9D3F7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMAlertControllerExample/Pods-RMAlertControllerExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B99634040710F19EDA08D1E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMAlertControllerExample/Pods-RMAlertControllerExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		440AA82F4879820618BCEEA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMAlertControllerExampleTests/Pods-RMAlertControllerExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AECBFFE25374DCF9069D391 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A49B65A2A96CFAECC8D915F2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMAlertControllerExampleTests/Pods-RMAlertControllerExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -388,8 +448,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -432,8 +494,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -452,13 +516,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		A595EEE61C80395E006C1B23 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 184026730AE98E528FCBFC18 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 25BD12103E7BA98C58630AEB /* Pods-RMAlertControllerExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -467,12 +532,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		A595EEE71C80395E006C1B23 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1057BE94ABDDDE21E71D826A /* Pods.release.xcconfig */;
+			baseConfigurationReference = C297DD75DEA94C12FFBC03FA /* Pods-RMAlertControllerExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -480,29 +546,34 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
 		A595EEE91C80395E006C1B23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 333836CFC58FAF0CDC5E9100 /* Pods-RMAlertControllerExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RMAlertControllerExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMAlertControllerExample.app/RMAlertControllerExample";
 			};
 			name = Debug;
 		};
 		A595EEEA1C80395E006C1B23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B94E808A840E8813DB0C6B69 /* Pods-RMAlertControllerExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RMAlertControllerExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rumori.RMAlertControllerExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMAlertControllerExample.app/RMAlertControllerExample";
 			};
 			name = Release;
