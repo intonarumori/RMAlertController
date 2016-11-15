@@ -43,10 +43,11 @@ class RMSeparatorView: UIView {
         
         let lineWidth:CGFloat = UIScreen.mainScreen().scale > 1.0 ? 0.5 : 1.0
         let lineRect = CGRect(origin: CGPoint.zero, size: CGSize(width: self.bounds.width, height: lineWidth))
-        let context = UIGraphicsGetCurrentContext()
-        CGContextClearRect(context, rect)
-        CGContextSetFillColorWithColor(context, self.lineColor.CGColor)
-        CGContextFillRect(context, lineRect)
+        if let context = UIGraphicsGetCurrentContext() {
+            CGContextClearRect(context, rect)
+            CGContextSetFillColorWithColor(context, self.lineColor.CGColor)
+            CGContextFillRect(context, lineRect)
+        }
     }
     
     override func intrinsicContentSize() -> CGSize {
