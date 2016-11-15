@@ -31,7 +31,7 @@ public class RMActionSheetAction {
 
 // MARK: -
 
-public class RMActionSheetController: UIViewController {
+public class RMActionSheetController: UIViewController, UIViewControllerTransitioningDelegate {
 
     let cornerRadius:CGFloat = 15.0
     let sectionSpacing:CGFloat = 8.0
@@ -53,22 +53,24 @@ public class RMActionSheetController: UIViewController {
         return self.isViewLoaded() ? (self.view as? OAStackView) : nil
     }
     
+    var actionSheetTransition: RMActionSheetTransition
+    
     var message:String?
     
     var actions:Array<RMActionSheetAction> = []
     var cancelAction:RMActionSheetAction?
     
-    var transitionDelegate:UIViewControllerTransitioningDelegate?
-    
     init(title:String, message:String) {
+
+        self.actionSheetTransition = RMActionSheetTransition()
+
         super.init(nibName: nil, bundle: nil)
         
         self.message = message
         self.title = title
         
-        self.transitionDelegate = RMActionSheetTransition()
-        self.transitioningDelegate = self.transitionDelegate
         self.modalPresentationStyle = .Custom
+        self.transitioningDelegate = actionSheetTransition
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -112,7 +114,7 @@ public class RMActionSheetController: UIViewController {
         button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         button.backgroundColor = UIColor.whiteColor()
         button.layer.cornerRadius = cornerRadius
-        button.addTarget(self, action: Selector("cancel"), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(RMActionSheetController.cancel), forControlEvents: .TouchUpInside)
         return button
     }
     
@@ -170,7 +172,7 @@ public class RMActionSheetController: UIViewController {
             if action.type == .Destructive {
                 button.setTitleColor(UIColor.redColor(), forState: .Normal)
             }
-            button.addTarget(self, action: Selector("itemTapped:"), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(RMActionSheetController.itemTapped(_:)), forControlEvents: .TouchUpInside)
             buttonStackView.addArrangedSubview(button)
 
             if index < (self.actions.count-1) {

@@ -11,7 +11,7 @@ import OAStackView
 
 public class CustomTextActionSheetController: UIViewController {
 
-    let cornerRadius:CGFloat = 5.0
+    let cornerRadius:CGFloat = 15.0
     let sectionSpacing:CGFloat = 2.0
     
     var titleColor:UIColor = UIColor.lightGrayColor()
@@ -36,17 +36,19 @@ public class CustomTextActionSheetController: UIViewController {
     var actions:Array<RMActionSheetAction> = []
     var cancelAction:RMActionSheetAction?
     
-    var transitionDelegate:UIViewControllerTransitioningDelegate?
+    var actionSheetTransition:RMActionSheetTransition
     
     init(title:String, message:String) {
+
+        self.actionSheetTransition = RMActionSheetTransition()
+        
         super.init(nibName: nil, bundle: nil)
         
         self.message = message
         self.title = title
         
-        self.transitionDelegate = RMActionSheetTransition()
-        self.transitioningDelegate = self.transitionDelegate
         self.modalPresentationStyle = .Custom
+        self.transitioningDelegate = actionSheetTransition
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -90,7 +92,7 @@ public class CustomTextActionSheetController: UIViewController {
         button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         button.backgroundColor = UIColor.whiteColor()
         button.layer.cornerRadius = cornerRadius
-        button.addTarget(self, action: Selector("cancel"), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(CustomTextActionSheetController.cancel), forControlEvents: .TouchUpInside)
         return button
     }
     
@@ -149,7 +151,7 @@ public class CustomTextActionSheetController: UIViewController {
             if action.type == .Destructive {
                 button.setTitleColor(UIColor.redColor(), forState: .Normal)
             }
-            button.addTarget(self, action: Selector("itemTapped:"), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(CustomTextActionSheetController.itemTapped(_:)), forControlEvents: .TouchUpInside)
             buttonStackView.addArrangedSubview(button)
             
             if index < (self.actions.count-1) {
