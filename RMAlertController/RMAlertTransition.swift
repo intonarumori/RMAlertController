@@ -8,35 +8,37 @@
 
 import UIKit
 
-open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
-    var showDuration:TimeInterval = 0.5
-    var hideDuration:TimeInterval = 0.3
+    public var showDuration: TimeInterval = 0.5
+    public var hideDuration: TimeInterval = 0.3
     
-    var backgroundAlpha:CGFloat = 0.4
-    var springDamping:CGFloat = 0.7
-    var dismissEnabledWithBackgroundTap:Bool = false
-    var backgroundFadeDurationPercent:Double = 0.4
+    public var backgroundAlpha: CGFloat = 0.4
+    public var springDamping: CGFloat = 0.7
+    public var dismissEnabledWithBackgroundTap: Bool = false
+    public var backgroundFadeDurationPercent: Double = 0.4
     
-    var minimumWidth:CGFloat = 250.0
-    var maximumWidth:CGFloat = 350.0
+    public var minimumWidth: CGFloat = 250.0
+    public var maximumWidth: CGFloat = 350.0
     
-    var horizontalPadding:CGFloat = 20.0
-    var verticalPadding:CGFloat = 20.0
+    public var horizontalPadding: CGFloat = 20.0
+    public var verticalPadding: CGFloat = 20.0
 
-    fileprivate var fadeView:UIView?
-    fileprivate var contentView:UIView?
+    fileprivate var fadeView: UIView?
+    fileprivate var contentView: UIView?
 
-    fileprivate var isDismissing:Bool = false
+    fileprivate var isDismissing: Bool = false
     
-    fileprivate weak var presentedViewController:UIViewController?
-    fileprivate weak var presentingViewController:UIViewController?
-    fileprivate weak var containerView:UIView?
+    fileprivate weak var presentedViewController: UIViewController?
+    fileprivate weak var presentingViewController: UIViewController?
+    fileprivate weak var containerView: UIView?
     
-    fileprivate var centerYConstraint:NSLayoutConstraint?
-    fileprivate var bottomConstraint:NSLayoutConstraint?
-    fileprivate var centerYConstant:CGFloat = 0.0
-    fileprivate var bottomConstant:CGFloat = 0.0
+    fileprivate var centerYConstraint: NSLayoutConstraint?
+    fileprivate var bottomConstraint: NSLayoutConstraint?
+    fileprivate var centerYConstant: CGFloat = 0.0
+    fileprivate var bottomConstant: CGFloat = 0.0
+    
+    // MARK: -
     
     override init() {
         super.init()
@@ -53,7 +55,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
         NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK:
+    // MARK: -
     
     @objc func keyboardWillShow(_ notification:Notification) {
         
@@ -101,7 +103,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
     }
 
     
-    // MARK:
+    // MARK: -
     
     open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = false
@@ -270,7 +272,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
         }
     }
     
-    // MARK: User actions
+    // MARK: - User actions
     
     @objc func backgroundTapped(_ tap:UITapGestureRecognizer) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)

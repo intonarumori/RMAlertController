@@ -10,28 +10,28 @@ import UIKit
 
 // MARK: -
 
-open class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
 
-    var transitionDuration:TimeInterval = 0.4
-    var backgroundAlpha:CGFloat = 0.4
-    var springDamping:CGFloat = 1.0
-    var dismissEnabledWithBackgroundTap:Bool = true
-    var backgroundFadeDurationPercent:Double = 0.4
+    public var transitionDuration: TimeInterval = 0.4
+    public var backgroundAlpha: CGFloat = 0.4
+    public var springDamping: CGFloat = 1.0
+    public var dismissEnabledWithBackgroundTap: Bool = true
+    public var backgroundFadeDurationPercent: Double = 0.4
 
-    var horizontalPadding:CGFloat = 10.0
-    var verticalPadding:CGFloat = 10.0
+    var horizontalPadding: CGFloat = 10.0
+    var verticalPadding: CGFloat = 10.0
     
     var tapHandler:(() -> Void)?
 
-    fileprivate var fadeView:UIView?
-    fileprivate var isDismissing:Bool = false
+    fileprivate var fadeView: UIView?
+    fileprivate var isDismissing: Bool = false
     
-    fileprivate weak var presentingViewController:UIViewController?
-    fileprivate weak var presentedViewController:UIViewController?
+    fileprivate weak var presentingViewController: UIViewController?
+    fileprivate weak var presentedViewController: UIViewController?
     
-    fileprivate weak var bottomConstraint:NSLayoutConstraint?
+    fileprivate weak var bottomConstraint: NSLayoutConstraint?
     
-    // MARK:
+    // MARK: -
     
     open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.isDismissing = false
@@ -45,7 +45,7 @@ open class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransition
         return self
     }
     
-    // MARK:
+    // MARK: -
     
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return transitionDuration
@@ -166,7 +166,7 @@ open class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransition
         }
     }
     
-    // MARK: User actions
+    // MARK: - User actions
     
     @objc func backgroundTapped(_ tap:UITapGestureRecognizer) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
