@@ -6,14 +6,6 @@
 //  Copyright © 2016 rumori. All rights reserved.
 //
 
-//
-//  ActionSheetTransition.swift
-//  RMAlertControllerExample
-//
-//  Created by Daniel Langh on 26/02/16.
-//  Copyright © 2016 rumori. All rights reserved.
-//
-
 import UIKit
 
 open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {

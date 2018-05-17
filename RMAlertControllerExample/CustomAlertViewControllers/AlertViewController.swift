@@ -26,10 +26,6 @@ class AlertViewController: UIViewController {
     
     // MARK:
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction func tapped() {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

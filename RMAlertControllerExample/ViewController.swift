@@ -16,13 +16,13 @@ class ViewController: UIViewController {
     
         let actionController = UIAlertController(title: "Title", message: "Message", preferredStyle: .actionSheet)
         actionController.addAction(UIAlertAction(title: "First option", style: .default, handler: { (action) -> Void in
-            print("Action: \(action.title)")
+            print("Action: \(action.title!)")
         }))
         actionController.addAction(UIAlertAction(title: "Second option", style: .destructive, handler: { (action) -> Void in
-            print("Action: \(action.title)")
+            print("Action: \(action.title!)")
         }))
         actionController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
-            print("Action: \(action.title)")
+            print("Action: \(action.title!)")
         }))
         self.present(actionController, animated: true, completion: nil)
     }
