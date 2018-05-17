@@ -45,8 +45,8 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
     }
     
     func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(RMAlertTransition.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(RMAlertTransition.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func removeObservers() {
@@ -55,7 +55,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
     
     // MARK:
     
-    func keyboardWillShow(_ notification:Notification) {
+    @objc func keyboardWillShow(_ notification:Notification) {
         
         if let endFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -76,7 +76,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
         }
     }
 
-    func keyboardWillHide(_ notification:Notification) {
+    @objc func keyboardWillHide(_ notification:Notification) {
 
         centerYConstant = 0.0
         bottomConstant = verticalPadding
@@ -180,7 +180,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
                     let fadeView = UIView(frame: containerView.bounds)
                     fadeView.backgroundColor = UIColor(white: 0.0, alpha: backgroundAlpha)
                     if dismissEnabledWithBackgroundTap {
-                        fadeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(RMAlertTransition.backgroundTapped(_:))))
+                        fadeView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped(_:))))
                     }
                     fadeView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     containerView.addSubview(fadeView)
@@ -213,7 +213,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
                     let topConstraint = NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: containerView, attribute: .top, multiplier: 1.0, constant: self.verticalPadding)
                     let bottomConstraint = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: self.bottomConstant)
                     let centerYConstraint = NSLayoutConstraint(item: contentView, attribute: .centerY, relatedBy: .equal, toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: self.centerYConstant)
-                    centerYConstraint.priority = 750
+                    centerYConstraint.priority = UILayoutPriority.defaultHigh
                     let minimumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.minimumWidth)
                     let maximumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.maximumWidth)
                     let centerXConstraint = NSLayoutConstraint(item: contentView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
@@ -272,7 +272,7 @@ open class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate, U
     
     // MARK: User actions
     
-    func backgroundTapped(_ tap:UITapGestureRecognizer) {
+    @objc func backgroundTapped(_ tap:UITapGestureRecognizer) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

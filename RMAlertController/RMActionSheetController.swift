@@ -113,7 +113,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
         button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = cornerRadius
-        button.addTarget(self, action: #selector(RMActionSheetController.cancel), for: .touchUpInside)
+        button.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         return button
     }
     
@@ -147,21 +147,24 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
 
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = NSTextAlignment.center
-            var attributes = [NSParagraphStyleAttributeName:paragraphStyle, NSFontAttributeName: self.itemTitleFont] as [String : Any]
+            var attributes: [NSAttributedStringKey: Any] = [
+                .paragraphStyle: paragraphStyle,
+                .font: self.itemTitleFont
+            ]
             if action.type == .destructive {
-                attributes[NSForegroundColorAttributeName] = self.itemDestructiveTextColor
+                attributes[.foregroundColor] = self.itemDestructiveTextColor
             } else {
                 if let itemTitleTextColor = self.itemTitleTextColor {
-                    attributes[NSForegroundColorAttributeName] = itemTitleTextColor
+                    attributes[.foregroundColor] = itemTitleTextColor
                 }
             }
             
             let attributedString = NSMutableAttributedString(string: action.title, attributes: attributes)
             if let subtitle = action.subtitle {
                 attributedString.append(NSAttributedString(string: "\n"))
-                let range = NSMakeRange(attributedString.length, subtitle.characters.count)
+                let range = NSMakeRange(attributedString.length, subtitle.count)
                 attributedString.append(NSAttributedString(string: subtitle))
-                attributes[NSFontAttributeName] = self.itemSubtitleFont
+                attributes[.font] = self.itemSubtitleFont
                 attributedString.setAttributes(attributes, range: range)
             }
             
@@ -171,7 +174,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
             if action.type == .destructive {
                 button.setTitleColor(UIColor.red, for: UIControlState())
             }
-            button.addTarget(self, action: #selector(RMActionSheetController.itemTapped(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(itemTapped(_:)), for: .touchUpInside)
             buttonStackView.addArrangedSubview(button)
 
             if index < (self.actions.count-1) {
@@ -233,7 +236,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
     
     // MARK: User actions
     
-    func itemTapped(_ button:UIButton) {
+    @objc func itemTapped(_ button:UIButton) {
         let index = button.tag
         if index >= 0 && index < self.actions.count {
             let action = actions[index]
@@ -242,7 +245,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    func cancel() {
+    @objc func cancel() {
         if let cancelAction = self.cancelAction {
             cancelAction.handler(cancelAction)
             self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in

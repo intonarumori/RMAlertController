@@ -115,7 +115,7 @@ open class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransition
                     
                     var fittingSize = UILayoutFittingCompressedSize
                     fittingSize.width = containerView.bounds.width - 2 * horizontalPadding
-                    let size = toView.systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: 1000, verticalFittingPriority: 750)
+                let size = toView.systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: UILayoutPriority.required, verticalFittingPriority: UILayoutPriority.defaultHigh)
                     
                     toView.translatesAutoresizingMaskIntoConstraints = false
                     containerView.addSubview(toView)
@@ -168,7 +168,7 @@ open class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransition
     
     // MARK: User actions
     
-    func backgroundTapped(_ tap:UITapGestureRecognizer) {
+    @objc func backgroundTapped(_ tap:UITapGestureRecognizer) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
