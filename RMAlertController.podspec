@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "RMAlertController"
-  s.version = "0.0.4"
+  s.version = "0.0.5"
   s.summary = "A Swift implementation of custom iOS alerts and actionsheets."
   s.homepage = "https://github.com/intonarumori/RMAlertController"
   s.license = { :type => "MIT", :file => "LICENSE.md" }
