@@ -40,7 +40,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     
     // MARK: -
     
-    override init() {
+    override public init() {
         super.init()
         self.addObservers()
         self.bottomConstant = verticalPadding
