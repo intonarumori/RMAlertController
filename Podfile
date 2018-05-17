@@ -3,7 +3,6 @@ use_frameworks!
 
 
 def shared_pods
-    pod "OAStackView"
 end
 
 target 'RMAlertControllerExample' do

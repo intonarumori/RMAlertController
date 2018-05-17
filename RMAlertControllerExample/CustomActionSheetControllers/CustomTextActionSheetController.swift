@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OAStackView
 
 open class CustomTextActionSheetController: UIViewController {
 
@@ -27,8 +26,8 @@ open class CustomTextActionSheetController: UIViewController {
     var itemDestructiveTextColor:UIColor = UIColor.red
     var itemTitleTextColor:UIColor? = nil
     
-    var stackView:OAStackView? {
-        return self.isViewLoaded ? (self.view as? OAStackView) : nil
+    var stackView: UIStackView? {
+        return self.isViewLoaded ? (self.view as? UIStackView) : nil
     }
     
     var message:String?
@@ -67,7 +66,7 @@ open class CustomTextActionSheetController: UIViewController {
     // MARK:
     
     override open func loadView() {
-        let view = OAStackView()
+        let view = UIStackView()
         view.axis = .vertical
         view.spacing = sectionSpacing
         self.view = view
@@ -100,7 +99,7 @@ open class CustomTextActionSheetController: UIViewController {
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
         
-        let buttonStackView = OAStackView()
+        let buttonStackView = UIStackView()
         buttonStackView.axis = .vertical
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonStackView)

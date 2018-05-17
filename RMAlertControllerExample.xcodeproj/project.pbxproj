@@ -42,6 +42,7 @@
 		4EDA9E1FCC4F1257BCF694B9 /* Pods_RMAlertControllerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMAlertControllerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E83E0B38F1E19E31D2BAED /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		732B7ED8E563C1A9DDD2769E /* Pods_RMAlertControllerExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMAlertControllerExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A516760720AD5B790062B164 /* RMAlertController.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RMAlertController.podspec; sourceTree = "<group>"; };
 		A54D01521C8055B800826978 /* RMAlertTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAlertTransition.swift; sourceTree = "<group>"; };
 		A54D01661C85947400826978 /* RMActionSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMActionSheetController.swift; sourceTree = "<group>"; };
 		A54D01681C85B00300826978 /* RMSeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMSeparatorView.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		A595EEBF1C80395E006C1B23 = {
 			isa = PBXGroup;
 			children = (
+				A516760720AD5B790062B164 /* RMAlertController.podspec */,
 				A595EEEB1C80397A006C1B23 /* RMAlertController */,
 				A595EECA1C80395E006C1B23 /* RMAlertControllerExample */,
 				A595EEDF1C80395E006C1B23 /* RMAlertControllerExampleTests */,
@@ -294,13 +296,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RMAlertControllerExample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		16BDFAEE33BDEA7387B9D3F7 /* [CP] Embed Pods Frameworks */ = {
@@ -309,9 +314,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RMAlertControllerExample/Pods-RMAlertControllerExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OAStackView/OAStackView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAStackView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -339,9 +347,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RMAlertControllerExampleTests/Pods-RMAlertControllerExampleTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OAStackView/OAStackView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAStackView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -354,13 +365,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RMAlertControllerExampleTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A49B65A2A96CFAECC8D915F2 /* [CP] Copy Pods Resources */ = {

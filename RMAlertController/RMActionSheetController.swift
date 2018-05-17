@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OAStackView
 
 public enum RMActionSheetActionType {
     case `default`
@@ -49,8 +48,8 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
     var itemDestructiveTextColor:UIColor = UIColor.red
     var itemTitleTextColor:UIColor? = nil
     
-    var stackView:OAStackView? {
-        return self.isViewLoaded ? (self.view as? OAStackView) : nil
+    var stackView: UIStackView? {
+        return self.isViewLoaded ? (self.view as? UIStackView) : nil
     }
     
     var actionSheetTransition: RMActionSheetTransition
@@ -91,7 +90,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
     // MARK:
     
     override open func loadView() {
-        let view = OAStackView()
+        let view = UIStackView()
         view.axis = .vertical
         view.spacing = sectionSpacing
         self.view = view
@@ -124,7 +123,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
         view.layer.cornerRadius = cornerRadius
         view.clipsToBounds = true
         
-        let buttonStackView = OAStackView()
+        let buttonStackView = UIStackView()
         buttonStackView.axis = .vertical
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonStackView)
