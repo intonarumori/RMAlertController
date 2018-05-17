@@ -21,7 +21,7 @@ open class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransition
     var horizontalPadding:CGFloat = 10.0
     var verticalPadding:CGFloat = 10.0
     
-    var tapHandler:((Void)->Void)?
+    var tapHandler:(() -> Void)?
 
     fileprivate var fadeView:UIView?
     fileprivate var isDismissing:Bool = false
