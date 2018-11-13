@@ -69,7 +69,7 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
                     delay: 0.0,
                     usingSpringWithDamping: springDamping,
                     initialSpringVelocity: 0.0,
-                    options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
+                    options: UIView.AnimationOptions.curveEaseIn, animations: { () -> Void in
                         bottomConstraint.constant = height + 10.0
                         containerView.layoutIfNeeded()
                     }, completion: { (finished) -> Void in
@@ -85,7 +85,7 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
             UIView.animate(
                 withDuration: fadeDuration,
                 delay: 0.0,
-                options: UIViewAnimationOptions.curveLinear,
+                options: UIView.AnimationOptions.curveLinear,
                 animations: { () -> Void in
                     fadeView?.alpha = 0.0
                 },
@@ -113,7 +113,7 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
                     containerView.addSubview(fadeView)
                     self.fadeView = fadeView
                     
-                    var fittingSize = UILayoutFittingCompressedSize
+                var fittingSize = UIView.layoutFittingCompressedSize
                     fittingSize.width = containerView.bounds.width - 2 * horizontalPadding
                 let size = toView.systemLayoutSizeFitting(fittingSize, withHorizontalFittingPriority: UILayoutPriority.required, verticalFittingPriority: UILayoutPriority.defaultHigh)
                     
@@ -136,7 +136,7 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
                         delay: 0.0,
                         usingSpringWithDamping: springDamping,
                         initialSpringVelocity: 0.0,
-                        options: UIViewAnimationOptions.curveEaseOut,
+                        options: UIView.AnimationOptions.curveEaseOut,
                         animations: { () -> Void in
                             bottomConstraint.constant = -self.verticalPadding
                             containerView.layoutIfNeeded()
@@ -150,7 +150,7 @@ public class RMActionSheetTransition: NSObject, UIViewControllerAnimatedTransiti
                     
                     fadeView.alpha = 0.0
                     UIView.animate(withDuration: fadeDuration,
-                        delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
+                                   delay: 0.0, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
                             fadeView.alpha = 1.0
                         }, completion: nil)
                     

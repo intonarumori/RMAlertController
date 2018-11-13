@@ -47,8 +47,8 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     }
     
     func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func removeObservers() {
@@ -59,7 +59,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     
     @objc func keyboardWillShow(_ notification:Notification) {
         
-        if let endFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let endFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             let height = endFrame.height
             centerYConstant = -height / 2.0
@@ -84,8 +84,8 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
         bottomConstant = verticalPadding
 
         if
-        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double,
-        let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UInt,
+            let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+            let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt,
         let centerYConstraint = self.centerYConstraint,
         let bottomConstraint = self.bottomConstraint {
 
@@ -94,7 +94,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                 
             UIView.animate(withDuration: duration,
                 delay: 0,
-                options: UIViewAnimationOptions(rawValue: curve),
+                options: UIView.AnimationOptions(rawValue: curve),
                 animations: {
                     self.containerView?.layoutIfNeeded()
                 },
@@ -139,7 +139,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
 
                 UIView.animate(withDuration: duration,
                     delay:0.0,
-                    options: UIViewAnimationOptions.curveEaseIn,
+                    options: UIView.AnimationOptions.curveEaseIn,
                     animations: { () -> Void in
                         
                         contentView.transform = CGAffineTransform(translationX: 0, y: containerView.bounds.height/2.0 + contentView.bounds.height/2.0)
@@ -155,7 +155,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                 UIView.animate(
                     withDuration: fadeDuration,
                     delay: fadeDelay,
-                    options: UIViewAnimationOptions.curveLinear,
+                    options: UIView.AnimationOptions.curveLinear,
                     animations: { () -> Void in
                         fadeView?.alpha = 0.0
                     },
@@ -237,7 +237,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                         delay: 0.0,
                         usingSpringWithDamping: springDamping,
                         initialSpringVelocity: 0.0,
-                        options: UIViewAnimationOptions.curveEaseOut,
+                        options: UIView.AnimationOptions.curveEaseOut,
                         animations: { () -> Void in
                             contentView.transform = CGAffineTransform.identity
                         }, completion: { (finished) -> Void in
@@ -252,7 +252,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                     UIView.animate(
                         withDuration: fadeDuration,
                         delay: 0.0,
-                        options: UIViewAnimationOptions.curveLinear,
+                        options: UIView.AnimationOptions.curveLinear,
                         animations: { () -> Void in
                             fadeView.alpha = 1.0
                         },

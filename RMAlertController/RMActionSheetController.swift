@@ -108,7 +108,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
     
     func createCancelButton(_ action:RMActionSheetAction) -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle(action.title, for: UIControlState())
+        button.setTitle(action.title, for: .normal)
         button.titleLabel?.font = self.cancelTitleFont
         button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         button.backgroundColor = UIColor.white
@@ -147,7 +147,7 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
 
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = NSTextAlignment.center
-            var attributes: [NSAttributedStringKey: Any] = [
+            var attributes: [NSAttributedString.Key: Any] = [
                 .paragraphStyle: paragraphStyle,
                 .font: self.itemTitleFont
             ]
@@ -168,11 +168,11 @@ open class RMActionSheetController: UIViewController, UIViewControllerTransition
                 attributedString.setAttributes(attributes, range: range)
             }
             
-            button.setAttributedTitle(attributedString, for: UIControlState())
+            button.setAttributedTitle(attributedString, for: .normal)
             button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
             button.backgroundColor = UIColor.white
             if action.type == .destructive {
-                button.setTitleColor(UIColor.red, for: UIControlState())
+                button.setTitleColor(UIColor.red, for: .normal)
             }
             button.addTarget(self, action: #selector(itemTapped(_:)), for: .touchUpInside)
             buttonStackView.addArrangedSubview(button)
