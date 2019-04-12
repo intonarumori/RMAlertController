@@ -20,6 +20,7 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
     
     public var minimumWidth: CGFloat = 250.0
     public var maximumWidth: CGFloat = 350.0
+    public var centerVertically: Bool = true
     
     public var horizontalPadding: CGFloat = 20.0
     public var verticalPadding: CGFloat = 20.0
@@ -211,19 +212,24 @@ public class RMAlertTransition: NSObject, UIViewControllerTransitioningDelegate,
                     
                     contentView.translatesAutoresizingMaskIntoConstraints = false
                     containerView.addSubview(contentView)
-                    
-                    let topConstraint = NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: containerView, attribute: .top, multiplier: 1.0, constant: self.verticalPadding)
+                
                     let bottomConstraint = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: self.bottomConstant)
-                    let centerYConstraint = NSLayoutConstraint(item: contentView, attribute: .centerY, relatedBy: .equal, toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: self.centerYConstant)
-                    centerYConstraint.priority = UILayoutPriority.defaultHigh
                     let minimumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.minimumWidth)
                     let maximumWidthConstraint = NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.maximumWidth)
                     let centerXConstraint = NSLayoutConstraint(item: contentView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
                     let leadingConstraint = NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .greaterThanOrEqual, toItem: containerView, attribute: .leading, multiplier: 1.0, constant: horizontalPadding)
                     let trailingConstraint = NSLayoutConstraint(item: contentView, attribute: .trailing, relatedBy: .lessThanOrEqual, toItem: containerView, attribute: .trailing, multiplier: 1.0, constant: -horizontalPadding)
-                    containerView.addConstraints([leadingConstraint, trailingConstraint, centerYConstraint, topConstraint, bottomConstraint, centerXConstraint, minimumWidthConstraint, maximumWidthConstraint])
+                    if centerVertically {
+                        let topConstraint = NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: containerView, attribute: .top, multiplier: 1.0, constant: self.verticalPadding)
+                        let centerYConstraint = NSLayoutConstraint(item: contentView, attribute: .centerY, relatedBy: .equal, toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: self.centerYConstant)
+                        centerYConstraint.priority = UILayoutPriority.defaultHigh
+                        containerView.addConstraints([leadingConstraint, trailingConstraint, centerYConstraint, topConstraint, bottomConstraint, centerXConstraint, minimumWidthConstraint, maximumWidthConstraint])
+                        self.centerYConstraint = centerYConstraint
+                    } else {
+                        let topConstraint = NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .topMargin, multiplier: 1.0, constant: self.verticalPadding)
+                        containerView.addConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint, centerXConstraint, minimumWidthConstraint, maximumWidthConstraint])
+                    }
                     self.contentView = contentView
-                    self.centerYConstraint = centerYConstraint
                     self.bottomConstraint = bottomConstraint
                     
                     
